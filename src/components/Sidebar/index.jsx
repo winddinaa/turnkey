@@ -1,40 +1,90 @@
-import {
-  ChevronDown,
-  ChevronUp,
-  ChevronFirst,
-  ChevronLast,
-  MoreVertical,
-} from "lucide-react";
-import logo from "../assets/images/tkc_logo.png";
-import profile from "../assets//images/Profile.png";
+import { ChevronDown, ChevronUp, MoreVertical } from "lucide-react";
+import profile from "../../assets//images/Profile.png";
 import { createContext, useContext, useState, useEffect, useRef } from "react";
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { LogoIcon, ManageIcon } from "../Icon";
+import {
+  Card,
+  Typography,
+  List,
+  ListItem,
+  ListItemPrefix,
+  ListItemSuffix,
+  Chip,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
+import { sideMenu } from "./constant";
 const SidebarContext = createContext();
 
-
-export default function Sidebar({ children ,acti}) {
+export default function Sidebar({ children, acti }) {
   const [expanded, setExpanded] = useState(true);
+  const [open, setOpen] = React.useState(0);
+
+  const handleOpen = (value) => {
+    setOpen(open === value ? 0 : value);
+  };
+  console.log("=> open", open);
   const [activeItem, setActiveItem] = useState(null);
   return (
     <>
       <aside className="flex min-h-screen">
         <nav className="min-h-screen flex flex-col bg-white border-r shadow-sm">
           <div className="p-4 pe-8 pb-2 flex justify-between items-center">
-            <img
-              src={logo}
-              className={`overflow-hidden transition-all ${
-                expanded ? "w-10" : "w-0"
-              }`}
-            />
-            <button
-              onClick={() => setExpanded((curr) => !curr)}
-              className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
-            >
-              {expanded ? <ChevronFirst /> : <ChevronLast />}
-            </button>
+            <LogoIcon />
           </div>
-
+          <List>
+            {sideMenu.map((itemMenu, index) => {
+              if (itemMenu.submenu.length > 0) {
+                return (
+                  <Accordion
+                    open={open === itemMenu.keyOpen}
+                    key={index.toString()}
+                  >
+                    <ListItem
+                      className="p-0"
+                      selected={open === itemMenu.keyOpen}
+                    >
+                      <AccordionHeader
+                        onClick={() => handleOpen(itemMenu.keyOpen)}
+                        className="border-b-0 p-3"
+                      >
+                        <ListItemPrefix>
+                          <itemMenu.icon />
+                        </ListItemPrefix>
+                        <Typography
+                          color="blue-gray"
+                          className="mr-auto font-normal"
+                        >
+                          {itemMenu.title}
+                        </Typography>
+                      </AccordionHeader>
+                    </ListItem>
+                    <AccordionBody className="py-1">
+                      {itemMenu.submenu.map((itemSubmenu, secondIndex) => {
+                        return (
+                          <List className="p-0" key={secondIndex.toString()}>
+                            <ListItem>{itemSubmenu.title}</ListItem>
+                          </List>
+                        );
+                      })}
+                    </AccordionBody>
+                  </Accordion>
+                );
+              } else {
+                return (
+                  <ListItem key={index.toString()}>
+                    <ListItemPrefix>
+                      <itemMenu.icon />
+                    </ListItemPrefix>
+                    {itemMenu.title}
+                  </ListItem>
+                );
+              }
+            })}
+          </List>
           <SidebarContext.Provider value={{ expanded }}>
             <ul className="flex-1 px-3">
               {React.Children.map(children, (child) =>
@@ -43,7 +93,6 @@ export default function Sidebar({ children ,acti}) {
                   onClick: () => setActiveItem(child.props.text),
                 })
               )}
-             
             </ul>
           </SidebarContext.Provider>
 
@@ -76,9 +125,9 @@ export function SidebarItem({ icon, text, alert, submenu, to }) {
   const [open, setOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("");
   const active =
-  activeItem === text || // Ensure clicking the button highlights "Performance"
-  location.pathname === to ||
-  submenu?.some((item) => location.pathname === item.to);
+    activeItem === text || // Ensure clicking the button highlights "Performance"
+    location.pathname === to ||
+    submenu?.some((item) => location.pathname === item.to);
   useEffect(() => {
     function handleClickOutside(event) {
       if (submenuRef.current && !submenuRef.current.contains(event.target)) {
