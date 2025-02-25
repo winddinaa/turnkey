@@ -23,6 +23,7 @@ import LayOut from "./components/Layout";
 import WrapLayout from "./components/WrapLayout";
 import KPIDepartmentPage from "./pages/KPIDepartment";
 import KPIEmployeePage from "./pages/KPIEmployee";
+import KPIHistoryPage from "./pages/KPIHistory";
 function App() {
   const [language, setLanguage] = useState("EN");
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/KPILevel" element={<KPILevel />} />
           <Route path="/kpis-department" element={<KPIDepartmentPage />} />
           <Route path="/kpis-employee" element={<KPIEmployeePage />} />
+          <Route path="/kpis-history" element={<KPIHistoryPage />} />
           <Route path="/SubCategory/2" element={<Sub2 />} />
           <Route path="/Department" element={<Department />} />
           <Route path="/Department/2" element={<Department_2 />} />

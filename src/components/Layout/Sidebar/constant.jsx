@@ -22,6 +22,7 @@ export const sideMenu = [
     submenu: [
       { title: "KPIs Department", href: "kpis-department" },
       { title: "KPIs Employee", href: "kpis-employee" },
+      { title: "KPIs History", href: "kpis-history" },
     ],
   },
   {
