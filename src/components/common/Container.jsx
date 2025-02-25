@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Container = ({ className = "" }) => {
-  return <div className={`${className} p-5`}>Container</div>;
+const Container = ({ className = "", children }) => {
+  return <div className={`${className} p-10`}>{children}</div>;
 };
 
 Container.propTypes = {
