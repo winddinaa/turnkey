@@ -7,18 +7,25 @@ const ButtonComponent = ({
   onClick = () => console.log("click button!"),
   type = "button",
   children,
+  className = "",
 }) => {
   return (
-    <Button type={type} variant={variant} onClick={onClick}>
+    <Button
+      type={type}
+      variant={variant}
+      onClick={onClick}
+      className={className}
+    >
       {children}
     </Button>
   );
 };
 
 ButtonComponent.propTypes = {
-  variant: PropTypes.string, // ต้องเป็น string และต้องส่งค่าเข้ามา
+  variant: PropTypes.oneOf(["filled", "outlined", "gradient", "text"]), // ต้องเป็น string และต้องส่งค่าเข้ามา
   onClick: PropTypes.func,
   type: PropTypes.oneOf(["button", "submit", "reset"]),
+  className: PropTypes.string,
 };
 
 export default ButtonComponent;

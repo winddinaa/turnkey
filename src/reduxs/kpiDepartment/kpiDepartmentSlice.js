@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   openModal: { mode: "", open: false },
+  dataModal: undefined,
 };
 
 const kpiDepartmentSlice = createSlice({
@@ -11,8 +12,26 @@ const kpiDepartmentSlice = createSlice({
     setModalAssignKpiDepartment(state, action) {
       state.openModal = action.payload;
     },
+    setDataModalAssignDepartment(state, action) {
+      state.dataModal = {
+        ...action.payload,
+        selectionRange: {
+          startDate: "2026-02-22",
+          endDate: "2026-02-28",
+          key: "selection",
+        },
+      };
+    },
+    clearModalAssignDepartment(state, action) {
+      state.openModal = { mode: "", open: false };
+      state.dataModal = undefined;
+    },
   },
 });
 
-export const { setModalAssignKpiDepartment } = kpiDepartmentSlice.actions;
+export const {
+  setModalAssignKpiDepartment,
+  setDataModalAssignDepartment,
+  clearModalAssignDepartment,
+} = kpiDepartmentSlice.actions;
 export default kpiDepartmentSlice.reducer;

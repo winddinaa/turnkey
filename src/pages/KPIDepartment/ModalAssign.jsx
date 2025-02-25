@@ -1,11 +1,13 @@
 import React from "react";
 import { Formik } from "formik";
 import ButtonComponent from "../../components/common/Button";
-import { EBool } from "../../constants/enum";
+import { EBool, EMode } from "../../constants/enum";
 import { Typography } from "@material-tailwind/react";
 import SelectMultiComponent from "../../components/Input/SelectMultiComponent";
 import SelectComponent from "../../components/Input/SelectComponent";
 import { DateRangePicker } from "react-date-range";
+import { useDispatch, useSelector } from "react-redux";
+import { clearModalAssignDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
 
 export const mockDepartMent = [
   {
@@ -52,41 +54,47 @@ export const mockArea = [
 ];
 
 const ModalAssign = () => {
+  const dispatch = useDispatch();
+  const kpiDeptRedux = useSelector((state) => state.kpiDept);
+  console.log("=>kpiDeptRedux", kpiDeptRedux);
   return (
     <Formik
-      initialValues={{
-        department: {
-          value: "",
-          label: "",
-        },
+      initialValues={
+        kpiDeptRedux.dataModal
+          ? kpiDeptRedux.dataModal
+          : {
+              department: {
+                value: "",
+                label: "",
+              },
 
-        area: {
-          value: "area1",
-          label: "Area 1",
-        },
-        category: [
-          {
-            value: "",
-            label: "",
-          },
-        ],
-        kpi: [
-          {
-            value: "",
-            label: "",
-          },
-        ],
-        selectionRange: {
-          startDate: new Date(),
-          endDate: new Date(),
-          key: "selection",
-        },
-      }}
+              area: {
+                value: "area1",
+                label: "Area 1",
+              },
+              category: [
+                {
+                  value: "",
+                  label: "",
+                },
+              ],
+              kpi: [
+                {
+                  value: "",
+                  label: "",
+                },
+              ],
+              selectionRange: {
+                startDate: "2026-02-22",
+                endDate: "2026-02-28",
+                key: "selection",
+              },
+            }
+      }
       onSubmit={(values, { setSubmitting }) => {
         console.log("=>values", values);
-
+        dispatch(clearModalAssignDepartment());
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
         }, 400);
       }}
@@ -108,6 +116,7 @@ const ModalAssign = () => {
           <SelectComponent
             name="department"
             option={mockDepartMent}
+            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
             onChange={(selectedOption) => {
               handleChange({
                 target: {
@@ -116,6 +125,7 @@ const ModalAssign = () => {
                 },
               });
             }}
+            dis
           />
 
           <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -124,6 +134,7 @@ const ModalAssign = () => {
           <SelectComponent
             name="area"
             option={mockArea}
+            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
             onChange={(selectedOption) => {
               handleChange({
                 target: {
@@ -141,6 +152,7 @@ const ModalAssign = () => {
             name="Category"
             option={mockCategory}
             closeMenuOnSelect={EBool.false}
+            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
             onChange={(selectedOption) => {
               handleChange({
                 target: {
@@ -158,6 +170,7 @@ const ModalAssign = () => {
             name="kpi"
             option={mockKPI}
             closeMenuOnSelect={EBool.false}
+            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
             onChange={(selectedOption) => {
               handleChange({
                 target: {
@@ -172,23 +185,45 @@ const ModalAssign = () => {
             Deadline
           </Typography>
           {console.log("=> value", values)}
-          <DateRangePicker
-            name="selectionRange"
-            staticRanges={[]}
-            inputRanges={[]}
-            ranges={[values.selectionRange]}
-            onChange={(e) => {
-              console.log("=>e", e);
-              handleChange({
-                target: {
-                  name: "selectionRange",
-                  value: e.selection,
-                },
-              });
-            }}
-          />
-          <div></div>
-          <ButtonComponent type="submit">Add</ButtonComponent>
+          <div
+            className={
+              kpiDeptRedux.openModal.mode !== EMode.view
+                ? ""
+                : "pointer-events-none opacity-50"
+            }
+          >
+            <DateRangePicker
+              name="selectionRange"
+              staticRanges={[]}
+              inputRanges={[]}
+              ranges={[values.selectionRange]}
+              onChange={(e) => {
+                handleChange({
+                  target: {
+                    name: "selectionRange",
+                    value: e.selection,
+                  },
+                });
+              }}
+            />
+          </div>
+          {kpiDeptRedux.openModal.mode !== EMode.view && (
+            <div className="flex flex-row items-center justify-center gap-2">
+              {kpiDeptRedux.openModal.mode !== EMode.edit && (
+                <ButtonComponent
+                  type="submit"
+                  variant="outlined"
+                  className="w-[20%]"
+                >
+                  Save Draft
+                </ButtonComponent>
+              )}
+
+              <ButtonComponent type="submit" className="w-[20%]">
+                {kpiDeptRedux.openModal.mode}
+              </ButtonComponent>
+            </div>
+          )}
         </form>
       )}
     </Formik>

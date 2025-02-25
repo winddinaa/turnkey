@@ -6,8 +6,11 @@ import DataGridComponent from "../../components/common/DataGrid";
 import { EColumnsKPIDepartment } from "./constants";
 import ModalComponent from "../../components/common/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalAssignKpiDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { EBool } from "../../constants/enum";
+import {
+  setModalAssignKpiDepartment,
+  setDataModalAssignDepartment,
+} from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { EBool, EMode } from "../../constants/enum";
 import ModalAssign from "./ModalAssign";
 
 const KPIDepartmentPage = () => {
@@ -18,15 +21,31 @@ const KPIDepartmentPage = () => {
     department: `Department${i + 1}`,
     kpis: `KPIs ${i + 1}`,
     category: `Category ${i + 1}`,
-    areaName: `Area ${i + 1}`,
+    area: `Area ${i + 1}`,
     type: `Type ${i + 1}`,
     status: "active",
   }));
   console.log("=> kpiDeptRedux", kpiDeptRedux);
+  const onView = (e) => {
+    dispatch(
+      setModalAssignKpiDepartment({ mode: EMode.view, open: EBool.true })
+    );
+    dispatch(setDataModalAssignDepartment(e));
+  };
+
+  const onEdit = (e) => {
+    dispatch(
+      setModalAssignKpiDepartment({ mode: EMode.edit, open: EBool.true })
+    );
+    dispatch(setDataModalAssignDepartment(e));
+  };
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">
       <Header />
-      <DataGridComponent rows={rows} columns={EColumnsKPIDepartment} />
+      <DataGridComponent
+        rows={rows}
+        columns={EColumnsKPIDepartment(onView, onEdit)}
+      />
       <ModalComponent
         open={kpiDeptRedux.openModal.open}
         title={`${kpiDeptRedux.openModal.mode} KPIs Department`}
