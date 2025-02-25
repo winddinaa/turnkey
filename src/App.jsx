@@ -23,14 +23,12 @@ import LayOut from "./components/Layout";
 import WrapLayout from "./components/WrapLayout";
 import KPIDepartmentPage from "./pages/KPIDepartment";
 function App() {
-  const [expanded, setExpanded] = useState(true);
   const [language, setLanguage] = useState("EN");
 
   const handleLanguageChange = (e) => {
     const newLang = e.target.value;
     setLanguage(newLang);
   };
-  const [activeItem, setActiveItem] = useState("");
   return (
     <WrapLayout>
       <LayOut>

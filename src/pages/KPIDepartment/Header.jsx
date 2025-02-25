@@ -3,8 +3,12 @@ import React from "react";
 import InputComponent from "../../components/Input/InputComponent";
 import { PlusIcon, SearchIcon } from "../../components/Icon";
 import ButtonComponent from "../../components/common/Button";
+import { useDispatch } from "react-redux";
+import { setModalAssignKpiDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { EBool, EMode } from "../../constants/enum";
 
 const Header = () => {
+  const dispatch = useDispatch();
   return (
     <div className="w-[100%]">
       <Typography variant="h3">Assign KPIs</Typography>
@@ -17,7 +21,16 @@ const Header = () => {
           <InputComponent icon={<SearchIcon />} />
         </div>
         <div>
-          <ButtonComponent>
+          <ButtonComponent
+            onClick={() => {
+              dispatch(
+                setModalAssignKpiDepartment({
+                  mode: EMode.add,
+                  open: EBool.true,
+                })
+              );
+            }}
+          >
             <div className="flex items-center justify-center">
               <PlusIcon />
               <Typography variant="h6">Assign KPIs</Typography>
