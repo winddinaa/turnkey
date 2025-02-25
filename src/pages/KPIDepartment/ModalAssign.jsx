@@ -220,7 +220,7 @@ const ModalAssign = () => {
               )}
 
               <ButtonComponent type="submit" className="w-[20%]">
-                {kpiDeptRedux.openModal.mode}
+                {kpiDeptRedux.openModal.mode === EMode.add ? "Submit" : "Edit"}
               </ButtonComponent>
             </div>
           )}

@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setModalAssignKpiDepartment,
   setDataModalAssignDepartment,
+  setModalDeleteAssignDepartment,
 } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
 import { EBool, EMode } from "../../constants/enum";
 import ModalAssign from "./ModalAssign";
+import ModalDelete from "./ModalDelete";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
@@ -25,7 +27,6 @@ const KPIDepartmentPage = () => {
     type: `Type ${i + 1}`,
     status: "active",
   }));
-  console.log("=> kpiDeptRedux", kpiDeptRedux);
   const onView = (e) => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.view, open: EBool.true })
@@ -39,12 +40,19 @@ const KPIDepartmentPage = () => {
     );
     dispatch(setDataModalAssignDepartment(e));
   };
+
+  const onDelete = (e) => {
+    console.log("=test");
+    dispatch(setModalDeleteAssignDepartment(true));
+  };
+  console.log("=> kpiDeptRedux1", kpiDeptRedux);
+
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">
       <Header />
       <DataGridComponent
         rows={rows}
-        columns={EColumnsKPIDepartment(onView, onEdit)}
+        columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
       />
       <ModalComponent
         open={kpiDeptRedux.openModal.open}
@@ -54,6 +62,13 @@ const KPIDepartmentPage = () => {
         }
       >
         <ModalAssign />
+      </ModalComponent>
+      <ModalComponent
+        title={`Delete  KPIs Department`}
+        open={kpiDeptRedux.openModalDelete}
+        handleClose={() => dispatch(setModalDeleteAssignDepartment(false))}
+      >
+        <ModalDelete />
       </ModalComponent>
     </Container>
   );

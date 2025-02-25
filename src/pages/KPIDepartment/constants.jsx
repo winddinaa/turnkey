@@ -30,10 +30,10 @@ export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
         <span className="cursor-pointer" onClick={() => onView(params.row)}>
           <ViewIcon />
         </span>
-        <span className="cursor-pointer" onClick={onEdit}>
+        <span className="cursor-pointer" onClick={() => onEdit(params.row)}>
           <EditIcon />
         </span>
-        <span className="cursor-pointer" onClick={onDelete}>
+        <span className="cursor-pointer" onClick={() => onDelete(params.row)}>
           <DeleteIcon />
         </span>
       </div>

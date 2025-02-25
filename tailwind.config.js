@@ -9,6 +9,7 @@ module.exports = withMT({
         localWhite: "#FFFF",
         localLightGrey: "#eeeeee",
         localLightGreen: "#2B8A8A",
+        localError: "#DC2626",
       },
     },
   },

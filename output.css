@@ -1298,6 +1298,10 @@ video {
   width: 110px;
 }
 
+.w-\[20\%\] {
+  width: 20%;
+}
+
 .w-\[50\%\] {
   width: 50%;
 }
@@ -1321,18 +1325,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[40\%\] {
-  width: 40%;
-}
-
-.w-\[30\%\] {
-  width: 30%;
-}
-
-.w-\[20\%\] {
-  width: 20%;
 }
 
 .min-w-\[100vw\] {
@@ -2436,6 +2428,11 @@ video {
 
 .bg-yellow-500\/20 {
   background-color: rgb(255 235 59 / 0.2);
+}
+
+.bg-localError {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {
