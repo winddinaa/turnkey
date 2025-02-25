@@ -6,3 +6,7 @@ export { default as ReportIcon } from "./ReportIcon";
 export { default as MenuIcon } from "./MenuIcon";
 export { default as SearchIcon } from "./SearchIcon";
 export { default as PlusIcon } from "./PlusIcon";
+export { default as DotIcon } from "./DotIcon";
+export { default as ViewIcon } from "./ViewIcon";
+export { default as EditIcon } from "./EditIcon";
+export { default as DeleteIcon } from "./DeleteIcon";

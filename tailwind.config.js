@@ -8,6 +8,7 @@ module.exports = withMT({
       colors: {
         localWhite: "#FFFF",
         localLightGrey: "#eeeeee",
+        localLightGreen: "#2B8A8A",
       },
     },
   },
