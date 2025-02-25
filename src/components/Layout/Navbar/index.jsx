@@ -9,7 +9,7 @@ const Navbar = () => {
   const dispath = useDispatch();
   const sidebarRedux = useSelector((state) => state.sidebar);
   return (
-    <div className="flex justify-between w-full bg-localWhite p-5 ">
+    <div className="flex justify-between w-full h-[5vh] bg-localWhite px-5 border-b border-solid border-localLightGrey">
       <ButtonComponent
         variant="text"
         onClick={() => dispath(setDrawerSidebar(!sidebarRedux.drawer))}

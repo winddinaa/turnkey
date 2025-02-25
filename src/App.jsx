@@ -21,6 +21,7 @@ import { EPathPage } from "./constants/enum";
 import AreaPage from "./pages/Area";
 import LayOut from "./components/Layout";
 import WrapLayout from "./components/WrapLayout";
+import KPIDepartmentPage from "./pages/KPIDepartment";
 function App() {
   const [expanded, setExpanded] = useState(true);
   const [language, setLanguage] = useState("EN");
@@ -33,25 +34,24 @@ function App() {
   return (
     <WrapLayout>
       <LayOut>
-        <div className="flex-1 p-4">
-          <Routes>
-            <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/Management" element={<Management />} />
-            <Route path={`/${EPathPage.area}`} element={<AreaPage />} />
-            <Route path="/Employee" element={<Employee />} />
-            <Route path="/Employee/2" element={<Employee_2 />} />
-            <Route path="/KPILevel" element={<KPILevel />} />
-            <Route path="/SubCategory/2" element={<Sub2 />} />
-            <Route path="/Department" element={<Department />} />
-            <Route path="/Department/2" element={<Department_2 />} />
-            <Route path="/KPIManagement" element={<ManagementKPI />} />
-            <Route path="/Assign" element={<AssignKPI />} />
-            <Route path="/Track" element={<TrackKPI />} />
-            <Route path="/Report" element={<Report />} />
-            <Route path="/Settings" element={<Setting />} />
-            <Route path="/Performance" element={<Performance />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Management" element={<Management />} />
+          <Route path={`/${EPathPage.area}`} element={<AreaPage />} />
+          <Route path="/Employee" element={<Employee />} />
+          <Route path="/Employee/2" element={<Employee_2 />} />
+          <Route path="/KPILevel" element={<KPILevel />} />
+          <Route path="/kpis-department" element={<KPIDepartmentPage />} />
+          <Route path="/SubCategory/2" element={<Sub2 />} />
+          <Route path="/Department" element={<Department />} />
+          <Route path="/Department/2" element={<Department_2 />} />
+          <Route path="/KPIManagement" element={<ManagementKPI />} />
+          <Route path="/Assign" element={<AssignKPI />} />
+          <Route path="/Track" element={<TrackKPI />} />
+          <Route path="/Report" element={<Report />} />
+          <Route path="/Settings" element={<Setting />} />
+          <Route path="/Performance" element={<Performance />} />
+        </Routes>
       </LayOut>
     </WrapLayout>
   );

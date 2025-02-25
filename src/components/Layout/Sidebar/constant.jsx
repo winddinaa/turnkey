@@ -20,7 +20,7 @@ export const sideMenu = [
     keyOpen: 3,
     icon: PieIcon,
     submenu: [
-      { title: "KPIs Department", href: "" },
+      { title: "KPIs Department", href: "kpis-department" },
       { title: "KPIs Employee", href: "" },
     ],
   },

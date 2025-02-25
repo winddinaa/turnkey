@@ -6,7 +6,8 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        localWhite: "#FFFF", // กำหนดเป็น flat key
+        localWhite: "#FFFF",
+        localLightGrey: "#eeeeee",
       },
     },
   },
