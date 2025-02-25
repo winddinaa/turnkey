@@ -3,10 +3,10 @@ import { DeleteIcon, DotIcon, EditIcon, ViewIcon } from "../../components/Icon";
 
 export const EColumnsKPIDepartment = [
   { field: "id", headerName: "No." },
-  { field: "departmentName", headerName: "Department Name", flex: 1 },
+  { field: "department", headerName: "Department Name", flex: 1 },
   { field: "kpis", headerName: "KPIs", flex: 1 },
-  { field: "categoryName", headerName: "Category Name", flex: 1 },
-  { field: "areaName", headerName: "Area Name", flex: 1 },
+  { field: "category", headerName: "Category Name", flex: 1 },
+  { field: "area", headerName: "Area Name", flex: 1 },
   {
     field: "status",
     headerName: "Status",

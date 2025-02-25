@@ -1,134 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Mitr:wght@200;300;400;500;600;700&display=swap');
+@import "react-date-range/dist/styles.css";
+@import "react-date-range/dist/theme/default.css";
+@import url("https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Mitr:wght@200;300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Mitr', sans-serif;
-    background-color: #F3F3F3;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mitr", sans-serif;
+  background-color: #f3f3f3;
 }
 
 .mt__top___3 {
-    margin-top: -3rem;
+  margin-top: -3rem;
 }
-.purple__color{
-    border: 2px solid #4F46E5;
+.purple__color {
+  border: 2px solid #4f46e5;
 }
 .purple__text {
-    color: #4F46E5;
+  color: #4f46e5;
 }
 .border__color__gray {
-    border: 1px solid #6C6C6C;
+  border: 1px solid #6c6c6c;
 }
 .gray__color {
-    border: 2px solid #6C6C6C;
+  border: 2px solid #6c6c6c;
 }
 .gray__text {
-    color: #6C6C6C;
+  color: #6c6c6c;
 }
 .subtext__color {
-    color: #0F0F0E;
+  color: #0f0f0e;
 }
 .style__search {
-    background-color: #E8EFF9;
+  background-color: #e8eff9;
 }
 .border__select__style {
-    border: 2px solid #6C6C6C !important;
-    border-color: #6C6C6C;
+  border: 2px solid #6c6c6c !important;
+  border-color: #6c6c6c;
 }
 .css-19bb58m {
-    margin: 12px !important;
+  margin: 12px !important;
 }
 .button__style {
-    padding: 0.9rem 2.5rem;
-    border-radius: 8px;
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
 }
 .background_blue {
-    background-color: #4F46E5;
-    color: white;
+  background-color: #4f46e5;
+  color: white;
 }
 .background_gray {
-    background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
 .button__style__table {
-    background-color: #26A69A;
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
+  background-color: #26a69a;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
 }
 .button__style__table__subcat {
-    background-color: #5175E9;
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
+  background-color: #5175e9;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
 }
 .border__color__input {
-    border-color: #ccc;
+  border-color: #ccc;
 }
 .bg-active {
-    background-color: rgba(37,126,126,0.09);
-    padding: 0.4rem 2rem;
-    border-radius: 8px;
+  background-color: rgba(37, 126, 126, 0.09);
+  padding: 0.4rem 2rem;
+  border-radius: 8px;
 }
 .bg-circle-active {
-    color: #3AA94F;
+  color: #3aa94f;
 }
 .eye__style {
-    font-size: 20px;
-    color: #5175E9;
+  font-size: 20px;
+  color: #5175e9;
 }
 .pencil__style {
-    font-size: 20px;
-    color: #FEB135;
+  font-size: 20px;
+  color: #feb135;
 }
 .bin__style {
-    font-size: 20px;
-    color: #FD4444;
+  font-size: 20px;
+  color: #fd4444;
 }
 .bg-circle-inactive {
-    color: #6C6C6C;
+  color: #6c6c6c;
 }
 .arrow__size {
-    font-size: 30px;
-    cursor: pointer;
+  font-size: 30px;
+  cursor: pointer;
 }
 .number__size {
-    font-size: 25px;
-    cursor:pointer;
+  font-size: 25px;
+  cursor: pointer;
 }
 .active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .text__purple {
-    color: #4F46E5;
+  color: #4f46e5;
 }
 
 input[type="radio"] {
-    scale: 1.5;
+  scale: 1.5;
 }
 
 .all__kpis {
-    background-color: #E6F6F2;
+  background-color: #e6f6f2;
 }
 .notStart {
-    background-color: #C5C5C5;
-
+  background-color: #c5c5c5;
 }
 .offTrack {
-    background-color: #FD4444;
-    color: white;
+  background-color: #fd4444;
+  color: white;
 }
 .onTrack {
-   background-color: #FEB135;
-   color: white;
+  background-color: #feb135;
+  color: white;
 }
 .completed {
-    background-color: #3AA94F;
-    color: white;
+  background-color: #3aa94f;
+  color: white;
 }
 .padding_0 {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }

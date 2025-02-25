@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 
 const ButtonComponent = ({
   variant = "filled",
-  onClick = () => "click",
+  onClick = () => console.log("click button!"),
+  type = "button",
   children,
 }) => {
   return (
-    <Button variant={variant} onClick={onClick}>
+    <Button type={type} variant={variant} onClick={onClick}>
       {children}
     </Button>
   );
@@ -17,6 +18,7 @@ const ButtonComponent = ({
 ButtonComponent.propTypes = {
   variant: PropTypes.string, // ต้องเป็น string และต้องส่งค่าเข้ามา
   onClick: PropTypes.func,
+  type: PropTypes.oneOf(["button", "submit", "reset"]),
 };
 
 export default ButtonComponent;

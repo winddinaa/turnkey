@@ -1,4 +1,5 @@
 import { Dialog, DialogBody, DialogHeader } from "@material-tailwind/react";
+import { Divider } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -13,7 +14,10 @@ const ModalComponent = ({
   return (
     <Dialog open={open} handler={handleClose}>
       <DialogHeader>{title}</DialogHeader>
-      <DialogBody>{children}</DialogBody>
+      <Divider />
+      <DialogBody className="max-h-[80vh] overflow-y-auto">
+        {children}
+      </DialogBody>
     </Dialog>
   );
 };

@@ -18,7 +18,7 @@ const Header = () => {
       w-[100%] justify-between"
       >
         <div className="py-5 w-[50%]">
-          <InputComponent icon={<SearchIcon />} />
+          <InputComponent label="Department code" icon={<SearchIcon />} />
         </div>
         <div>
           <ButtonComponent

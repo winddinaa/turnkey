@@ -8,7 +8,7 @@ export const EBool = {
 };
 
 export const EMode = {
-  edit: "edit",
-  view: "view",
-  add: "add",
+  edit: "Edit",
+  view: "View",
+  add: "Add",
 };
