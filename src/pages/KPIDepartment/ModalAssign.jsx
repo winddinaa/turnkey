@@ -56,7 +56,6 @@ export const mockArea = [
 const ModalAssign = () => {
   const dispatch = useDispatch();
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
-  console.log("=>kpiDeptRedux", kpiDeptRedux);
   return (
     <Formik
       initialValues={
@@ -125,7 +124,6 @@ const ModalAssign = () => {
                 },
               });
             }}
-            dis
           />
 
           <Typography variant="h6" color="blue-gray" className="-mb-3">

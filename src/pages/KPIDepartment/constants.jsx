@@ -8,6 +8,7 @@ export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
   { field: "kpis", headerName: "KPIs", flex: 1 },
   { field: "category", headerName: "Category Name", flex: 1 },
   { field: "area", headerName: "Area Name", flex: 1 },
+  { field: "type", headerName: "Type", flex: 1 },
   {
     field: "status",
     headerName: "Status",
@@ -18,7 +19,6 @@ export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
       </div>
     ),
   },
-  { field: "type", headerName: "Type", flex: 1 },
   {
     field: "action",
     headerName: "Action",

@@ -15,7 +15,7 @@ const ModalComponent = ({
     <Dialog open={open} handler={handleClose}>
       <DialogHeader>{title}</DialogHeader>
       <Divider />
-      <DialogBody className="max-h-[80vh] overflow-y-auto">
+      <DialogBody className="max-h-[80vh]  gap-5 overflow-y-auto  ">
         {children}
       </DialogBody>
     </Dialog>

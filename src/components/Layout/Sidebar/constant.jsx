@@ -21,7 +21,7 @@ export const sideMenu = [
     icon: PieIcon,
     submenu: [
       { title: "KPIs Department", href: "kpis-department" },
-      { title: "KPIs Employee", href: "" },
+      { title: "KPIs Employee", href: "kpis-employee" },
     ],
   },
   {

@@ -12,13 +12,21 @@ const DataGridComponent = ({
     { id: 2, col1: "DataGridPro", col2: "is Awesome" },
     { id: 3, col1: "MUI", col2: "is Amazing" },
   ],
+  checkboxSelection = false,
 }) => {
-  return <DataGrid rows={rows} columns={columns} />;
+  return (
+    <DataGrid
+      rows={rows}
+      columns={columns}
+      checkboxSelection={checkboxSelection}
+    />
+  );
 };
 
 DataGridComponent.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.any).isRequired,
   rows: PropTypes.arrayOf(PropTypes.any).isRequired,
+  checkboxSelection: PropTypes.bool,
 };
 
 export default DataGridComponent;

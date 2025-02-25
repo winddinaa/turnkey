@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const kpiDepartmentSlice = createSlice({
-  name: "screenSize",
+  name: "kpiDepartment",
   initialState,
   reducers: {
     setModalAssignKpiDepartment(state, action) {
