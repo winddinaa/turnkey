@@ -1,11 +1,12 @@
 const withMT = require("@material-tailwind/react/utils/withMT");
+
 /** @type {import('tailwindcss').Config} */
-export default withMT({
+module.exports = withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        "dark-yellow": "#FEB135",
+        localWhite: "#FFFF", // กำหนดเป็น flat key
       },
     },
   },
