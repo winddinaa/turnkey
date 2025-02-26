@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const ButtonComponent = ({
   variant = "filled",
-  onClick = () => console.log("click button!"),
+  onClick,
   type = "button",
   children,
   className = "",
