@@ -11,6 +11,7 @@ const SelectMultiComponent = ({
   onChange = () => {},
   placeholder = "select",
   isDisabled = false,
+  value,
 }) => {
   return (
     <>
@@ -23,6 +24,7 @@ const SelectMultiComponent = ({
         options={option}
         onChange={onChange}
         isDisabled={isDisabled}
+        value={value}
       />
     </>
   );
@@ -37,5 +39,6 @@ SelectMultiComponent.propTypes = {
   init: PropTypes.arrayOf(PropTypes.any),
   placeholder: PropTypes.string,
   isDisabled: PropTypes.bool,
+  value: PropTypes.any,
 };
 export default SelectMultiComponent;

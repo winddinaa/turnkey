@@ -11,8 +11,7 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <div className="w-[100%]">
-      <Typography variant="h3">Assign KPIs</Typography>
-      <Typography variant="h3">KPIs Department</Typography>
+      <Typography variant="h3">Assign KPIs Department</Typography>
       <div
         className="flex 
      w-[100%] justify-between items-center"

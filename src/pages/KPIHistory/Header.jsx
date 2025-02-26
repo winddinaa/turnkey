@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <div className="w-[100%]">
-      <Typography variant="h3">KPIs History</Typography>
+      <Typography variant="h3">Assign KPIs Employee History</Typography>
       <div
         className="flex 
       w-[100%] justify-between items-center"

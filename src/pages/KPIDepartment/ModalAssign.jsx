@@ -1,13 +1,16 @@
 import React from "react";
 import { Formik } from "formik";
 import ButtonComponent from "../../components/common/Button";
-import { EBool, EMode } from "../../constants/enum";
+import { EBool, EMode, ESelectType } from "../../constants/enum";
 import { Typography } from "@material-tailwind/react";
 import SelectMultiComponent from "../../components/Input/SelectMultiComponent";
 import SelectComponent from "../../components/Input/SelectComponent";
 import { DateRangePicker } from "react-date-range";
 import { useDispatch, useSelector } from "react-redux";
 import { clearModalAssignDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { convertStringToArray, filterValueSelect } from "../../utils/helper";
+import isEmpty from "is-empty";
+import { mockArea, mockCategory, mockKPI, mockStatus } from "./constants";
 
 export const mockDepartMent = [
   {
@@ -20,42 +23,15 @@ export const mockDepartMent = [
   },
 ];
 
-export const mockKPI = [
-  {
-    value: "kpi1",
-    label: "KPI 1",
-  },
-  {
-    value: "kpi2",
-    label: "KPI 2",
-  },
-];
-
-export const mockCategory = [
-  {
-    value: "category1",
-    label: "Category 1",
-  },
-  {
-    value: "category2",
-    label: "Category 2",
-  },
-];
-
-export const mockArea = [
-  {
-    value: "area1",
-    label: "Area 1",
-  },
-  {
-    value: "area2",
-    label: "Area 2",
-  },
-];
+const dateFrom = new Date();
+const dateTo = new Date();
+dateFrom.setDate(dateFrom.getDate() - 3);
+dateTo.setDate(dateTo.getDate() + 2);
 
 const ModalAssign = () => {
   const dispatch = useDispatch();
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
+
   return (
     <Formik
       initialValues={
@@ -68,24 +44,18 @@ const ModalAssign = () => {
               },
 
               area: {
-                value: "area1",
-                label: "Area 1",
+                value: "",
+                label: "",
               },
-              category: [
-                {
-                  value: "",
-                  label: "",
-                },
-              ],
-              kpi: [
-                {
-                  value: "",
-                  label: "",
-                },
-              ],
+              category: [],
+              kpis: "",
+              area: {
+                value: "",
+                label: "",
+              },
               selectionRange: {
-                startDate: "2026-02-22",
-                endDate: "2026-02-28",
+                startDate: dateFrom,
+                endDate: dateTo,
                 key: "selection",
               },
             }
@@ -125,7 +95,7 @@ const ModalAssign = () => {
               });
             }}
           />
-
+          {console.log("=> value", values)}
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Area
           </Typography>
@@ -147,9 +117,10 @@ const ModalAssign = () => {
             Category
           </Typography>
           <SelectMultiComponent
-            name="Category"
+            name="category"
             option={mockCategory}
             closeMenuOnSelect={EBool.false}
+            value={values.categories}
             isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
             onChange={(selectedOption) => {
               handleChange({
@@ -164,25 +135,44 @@ const ModalAssign = () => {
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             KPIs
           </Typography>
+
           <SelectMultiComponent
-            name="kpi"
+            name="kpis"
             option={mockKPI}
             closeMenuOnSelect={EBool.false}
             isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
+            value={values.kpis}
             onChange={(selectedOption) => {
               handleChange({
                 target: {
-                  name: "department",
+                  name: "kpis",
                   value: selectedOption,
                 },
               });
             }}
           />
-
+          
+          <Typography variant="h6" color="blue-gray" className="-mb-3">
+            Status
+          </Typography>
+          <SelectComponent
+            name="status"
+            option={mockStatus}
+            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
+            onChange={(selectedOption) => {
+              handleChange({
+                target: {
+                  name: "status",
+                  value: selectedOption,
+                },
+              });
+            }}
+          />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Deadline
           </Typography>
           {console.log("=> value", values)}
+
           <div
             className={
               kpiDeptRedux.openModal.mode !== EMode.view
@@ -205,6 +195,7 @@ const ModalAssign = () => {
               }}
             />
           </div>
+
           {kpiDeptRedux.openModal.mode !== EMode.view && (
             <div className="flex flex-row items-center justify-center gap-2">
               {kpiDeptRedux.openModal.mode !== EMode.edit && (

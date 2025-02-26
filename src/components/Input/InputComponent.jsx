@@ -8,7 +8,6 @@ const InputComponent = ({
   label,
   placeholder = "input ",
 }) => {
-  console.log("=> icon", icon);
   return (
     <Input
       label={label ? label : undefined}

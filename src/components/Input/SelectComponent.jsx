@@ -11,6 +11,7 @@ const SelectComponent = ({
   onChange = () => {},
   placeholder = "select",
   isDisabled = false,
+  value,
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const SelectComponent = ({
         closeMenuOnSelect={closeMenuOnSelect}
         components={animatedComponents}
         defaultValue={init}
+        value={value}
         options={option}
         onChange={onChange}
         isDisabled={isDisabled}
@@ -36,5 +38,6 @@ SelectComponent.propTypes = {
   init: PropTypes.arrayOf(PropTypes.any),
   placeholder: PropTypes.string,
   isDisabled: PropTypes.bool,
+  value: PropTypes.any,
 };
 export default SelectComponent;

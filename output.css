@@ -1162,6 +1162,10 @@ video {
   min-height: 48px;
 }
 
+.min-h-\[50vh\] {
+  min-height: 50vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2331,6 +2335,11 @@ video {
   background-color: rgb(205 220 57 / 0.2);
 }
 
+.bg-localError {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
+}
+
 .bg-localWhite {
   background-color: #FFFF;
 }
@@ -2428,11 +2437,6 @@ video {
 
 .bg-yellow-500\/20 {
   background-color: rgb(255 235 59 / 0.2);
-}
-
-.bg-localError {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {

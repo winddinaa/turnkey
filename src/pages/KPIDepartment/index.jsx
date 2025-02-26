@@ -3,7 +3,12 @@ import Container from "../../components/common/Container";
 
 import Header from "./Header";
 import DataGridComponent from "../../components/common/DataGrid";
-import { EColumnsKPIDepartment } from "./constants";
+import {
+  EColumnsKPIDepartment,
+  mockArea,
+  mockCategory,
+  mockKPI,
+} from "./constants";
 import ModalComponent from "../../components/common/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,9 +16,10 @@ import {
   setDataModalAssignDepartment,
   setModalDeleteAssignDepartment,
 } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { EBool, EMode } from "../../constants/enum";
+import { EBool, EMode, ESelectType } from "../../constants/enum";
 import ModalAssign from "./ModalAssign";
 import ModalDelete from "./ModalDelete";
+import { convertStringToArray, filterValueSelect } from "../../utils/helper";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
@@ -22,7 +28,7 @@ const KPIDepartmentPage = () => {
     id: i + 1,
     department: `Department${i + 1}`,
     kpis: `KPIs ${i + 1}`,
-    category: `Category ${i + 1}`,
+    categories: `Category ${i + 1}`,
     area: `Area ${i + 1}`,
     type: `Type ${i + 1}`,
     status: "active",
@@ -31,18 +37,44 @@ const KPIDepartmentPage = () => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.view, open: EBool.true })
     );
-    dispatch(setDataModalAssignDepartment(e));
+    let bodyShow = {
+      ...e,
+      kpis: filterValueSelect(
+        convertStringToArray(e.kpis),
+        mockKPI,
+        ESelectType.multi
+      ),
+      categories: filterValueSelect(
+        convertStringToArray(e.categories),
+        mockCategory,
+        ESelectType.multi
+      ),
+      area: filterValueSelect(e.area, mockArea, ESelectType.single),
+    };
+    console.log("=> e", e);
+
+    console.log("=> bodyShow", bodyShow);
+
+    dispatch(setDataModalAssignDepartment(bodyShow));
   };
 
   const onEdit = (e) => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.edit, open: EBool.true })
     );
-    dispatch(setDataModalAssignDepartment(e));
+
+    let bodyShow = {
+      ...e,
+      kpis: filterValueSelect(
+        convertStringToArray(e.kpis),
+        mockKPI,
+        ESelectType.multi
+      ),
+    };
+    dispatch(setDataModalAssignDepartment(bodyShow));
   };
 
   const onDelete = (e) => {
-    console.log("=test");
     dispatch(setModalDeleteAssignDepartment(true));
   };
   console.log("=> kpiDeptRedux1", kpiDeptRedux);

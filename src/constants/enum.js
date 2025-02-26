@@ -12,3 +12,8 @@ export const EMode = {
   view: "View",
   add: "Add",
 };
+
+export const ESelectType = {
+  multi: "multi",
+  single: "single",
+};

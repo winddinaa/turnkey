@@ -6,6 +6,11 @@ const initialState = {
   dataModal: undefined,
 };
 
+const dateFrom = new Date();
+const dateTo = new Date();
+dateFrom.setDate(dateFrom.getDate() - 3);
+dateTo.setDate(dateTo.getDate() + 2);
+
 const kpiDepartmentSlice = createSlice({
   name: "kpiDepartment",
   initialState,
@@ -17,8 +22,8 @@ const kpiDepartmentSlice = createSlice({
       state.dataModal = {
         ...action.payload,
         selectionRange: {
-          startDate: "2026-02-22",
-          endDate: "2026-02-28",
+          startDate: dateFrom,
+          endDate: dateTo,
           key: "selection",
         },
       };
