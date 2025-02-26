@@ -7,6 +7,7 @@ const InputComponent = ({
   className = "",
   label,
   placeholder = "input ",
+  variant = "outlined",
 }) => {
   return (
     <Input
@@ -23,6 +24,7 @@ const InputComponent = ({
       }
       placeholder={placeholder}
       icon={icon}
+      variant={variant}
     />
   );
 };
@@ -32,5 +34,6 @@ InputComponent.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
+  variant: PropTypes.string,
 };
 export default InputComponent;

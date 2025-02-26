@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-const LogoIcon = ({ fill = "none" }) => {
+const LogoIcon = ({ fill = "none", width = "76", height = "29" }) => {
   return (
     <svg
-      width="76"
-      height="29"
+      width={width}
+      height={height}
       viewBox="0 0 76 29"
       fill={fill}
       xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,9 @@ const LogoIcon = ({ fill = "none" }) => {
 };
 
 LogoIcon.propTypes = {
-  fill: PropTypes.string, // ต้องเป็น string และต้องส่งค่าเข้ามา
+  fill: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default LogoIcon;

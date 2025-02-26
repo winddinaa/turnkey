@@ -43,10 +43,6 @@ const ModalAssign = () => {
                 label: "",
               },
 
-              area: {
-                value: "",
-                label: "",
-              },
               category: [],
               kpis: "",
               area: {
@@ -151,7 +147,7 @@ const ModalAssign = () => {
               });
             }}
           />
-          
+
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Status
           </Typography>

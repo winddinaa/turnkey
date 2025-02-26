@@ -24,6 +24,7 @@ import WrapLayout from "./components/WrapLayout";
 import KPIDepartmentPage from "./pages/KPIDepartment";
 import KPIEmployeePage from "./pages/KPIEmployee";
 import KPIHistoryPage from "./pages/KPIHistory";
+import LoginPage from "./pages/Login";
 function App() {
   const [language, setLanguage] = useState("EN");
 
@@ -35,6 +36,7 @@ function App() {
     <WrapLayout>
       <LayOut>
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Management" element={<Management />} />
           <Route path={`/${EPathPage.area}`} element={<AreaPage />} />
