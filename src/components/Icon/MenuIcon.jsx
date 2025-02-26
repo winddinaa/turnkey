@@ -19,6 +19,6 @@ const MenuIcon = ({ fill = "none" }) => {
   );
 };
 MenuIcon.propTypes = {
-  fill: PropTypes.oneOf(["filled", "gradient", "outlined", "text"]), // ต้องเป็น string และต้องส่งค่าเข้ามา
+  fill: PropTypes.string,
 };
 export default MenuIcon;

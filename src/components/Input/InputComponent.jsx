@@ -9,6 +9,7 @@ const InputComponent = ({
   placeholder = "input ",
   variant = "outlined",
   onChange,
+  ...rest
 }) => {
   return (
     <Input
@@ -27,8 +28,8 @@ const InputComponent = ({
       icon={icon}
       variant={variant}
       onChange={onChange}
+      {...rest}
     />
-    
   );
 };
 

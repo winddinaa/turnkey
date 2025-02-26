@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
-import { LogoIcon } from "../../components/Icon";
+import { LogoIcon, NotViewIcon, ViewIcon } from "../../components/Icon";
 import InputComponent from "../../components/Input/InputComponent";
 import SwitchComponent from "../../components/Input/SwitchComponent";
 import ButtonComponent from "../../components/common/Button";
@@ -13,6 +13,7 @@ import loginSVG from "../../assets/images/login.svg";
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = React.useState(false);
   const isLargScreen = useSelector((state) => state.screenSize.isLargeScreen);
   return (
     <div className="flex flex-row vw-[100vw] vh--[100vh] bg-localWhite ">
@@ -79,6 +80,32 @@ const LoginPage = () => {
                 label="Password"
                 variant="static"
                 placeholder="Enter your password"
+                type={showPassword ? "text" : "password"}
+                icon={
+                  showPassword ? (
+                    <div
+                      className="cursor-pointer"
+                      onClick={() => setShowPassword(false)}
+                    >
+                      <ViewIcon />
+                    </div>
+                  ) : (
+                    <div
+                      className="cursor-pointer"
+                      onClick={() => setShowPassword(true)}
+                    >
+                      <NotViewIcon />
+                    </div>
+                  )
+                }
+                onChange={(e) => {
+                  handleChange({
+                    target: {
+                      name: "password",
+                      value: e.target.value,
+                    },
+                  });
+                }}
               />
               <div className="flex flex-row justify-between w-[100%] ">
                 <div className="flex flex-row gap-5">
