@@ -45,3 +45,39 @@ export const sideMenu = [
     submenu: [],
   },
 ];
+
+export const sideMenuEmployee = [
+  {
+    title: "Dashboard",
+    keyOpen: 4,
+    icon: MeasurementIcon,
+    submenu: [],
+  },
+  {
+    title: "Individual KPIs Report",
+    keyOpen: 5,
+    icon: ReportIcon,
+    submenu: [],
+  },
+
+  {
+    title: "Team KPIs Report",
+    keyOpen: 6,
+    icon: SettingIcon,
+    submenu: [],
+  },
+
+  {
+    title: "Measurement",
+    keyOpen: 6,
+    icon: SettingIcon,
+    submenu: [],
+  },
+
+  {
+    title: "Assign KPI",
+    keyOpen: 6,
+    icon: SettingIcon,
+    submenu: [],
+  },
+];
