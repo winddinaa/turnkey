@@ -1,11 +1,11 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
-import InputComponent from "../../components/Input/InputComponent";
-import { PlusIcon, SearchIcon } from "../../components/Icon";
-import ButtonComponent from "../../components/common/Button";
+import InputComponent from "../../../components/Input/InputComponent";
+import { PlusIcon, SearchIcon } from "../../../components/Icon";
+import ButtonComponent from "../../../components/common/Button";
 import { useDispatch } from "react-redux";
-import { setModalAssignKpiDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { EBool, EMode } from "../../constants/enum";
+import { setModalAssignKpiDepartment } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { EBool, EMode } from "../../../constants/enum";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
-import ButtonComponent from "../../components/common/Button";
+import ButtonComponent from "../../../components/common/Button";
 import { useDispatch } from "react-redux";
-import { setModalDeleteAssignDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { setModalDeleteAssignDepartment } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
 
 const ModalDelete = () => {
   const dispatch = useDispatch();

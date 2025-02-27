@@ -1,4 +1,4 @@
-import { DeleteIcon, DotIcon, EditIcon, ViewIcon } from "../../components/Icon";
+import { DotIcon } from "../../../components/Icon";
 
 export const EColumnsKPIEmployee = () => [
   { field: "id", headerName: "No." },

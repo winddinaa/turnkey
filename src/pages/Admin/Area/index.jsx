@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import SearchBar from "../../components/SearchBar";
+import SearchBar from "../../../components/SearchBar";
 import Select from "react-select";
-import DataTable from "../../components/DataTable";
+import DataTable from "../../../components/DataTable";
 import "remixicon/fonts/remixicon.css";
-import Switch from "../../components/Switch";
+import Switch from "../../../components/Switch";
 function AreaPage() {
-  const [selectedRows, setSelectedRows] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [isModalOpen3, setIsModalOpen3] = useState(false);

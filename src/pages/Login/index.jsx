@@ -30,9 +30,13 @@ const LoginPage = () => {
             console.log("=> username");
             if (values.username === "employee") {
               dispatch(setPermission(["emp"]));
+              localStorage.setItem("permission", ["employee", "admin"]);
+              navigate("/AreaLevel");
+            } else {
+              dispatch(setPermission(["employee", "admin"]));
+              localStorage.setItem("permission", ["employee", "admin"]);
+              navigate("/admin-kpis-department");
             }
-            dispatch(setPermission(["employee", "admin"]));
-            navigate("/kpis-department");
           }
           setTimeout(() => {
             setSubmitting(false);

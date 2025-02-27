@@ -17,3 +17,8 @@ export const ESelectType = {
   multi: "multi",
   single: "single",
 };
+
+export const ERoles = {
+  admin: "admin",
+  employee: "employee",
+};

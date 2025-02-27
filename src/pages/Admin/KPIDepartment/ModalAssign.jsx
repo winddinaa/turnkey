@@ -1,14 +1,14 @@
 import React from "react";
 import { Formik } from "formik";
-import ButtonComponent from "../../components/common/Button";
-import { EBool, EMode, ESelectType } from "../../constants/enum";
+import ButtonComponent from "../../../components/common/Button";
+import { EBool, EMode, ESelectType } from "../../../constants/enum";
 import { Typography } from "@material-tailwind/react";
-import SelectMultiComponent from "../../components/Input/SelectMultiComponent";
-import SelectComponent from "../../components/Input/SelectComponent";
+import SelectMultiComponent from "../../../components/Input/SelectMultiComponent";
+import SelectComponent from "../../../components/Input/SelectComponent";
 import { DateRangePicker } from "react-date-range";
 import { useDispatch, useSelector } from "react-redux";
-import { clearModalAssignDepartment } from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { convertStringToArray, filterValueSelect } from "../../utils/helper";
+import { clearModalAssignDepartment } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
 import isEmpty from "is-empty";
 import { mockArea, mockCategory, mockKPI, mockStatus } from "./constants";
 

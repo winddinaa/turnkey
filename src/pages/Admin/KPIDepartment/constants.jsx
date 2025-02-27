@@ -1,6 +1,11 @@
 import { Typography } from "@material-tailwind/react";
-import { DeleteIcon, DotIcon, EditIcon, ViewIcon } from "../../components/Icon";
-import ButtonComponent from "../../components/common/Button";
+import {
+  DeleteIcon,
+  DotIcon,
+  EditIcon,
+  ViewIcon,
+} from "../../../components/Icon";
+import ButtonComponent from "../../../components/common/Button";
 
 export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
   { field: "id", headerName: "No." },

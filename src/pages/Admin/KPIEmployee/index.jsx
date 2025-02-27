@@ -1,11 +1,11 @@
 import React from "react";
-import Container from "../../components/common/Container";
+import Container from "../../../components/common/Container";
 import Header from "./Header";
-import DataGridComponent from "../../components/common/DataGrid";
+import DataGridComponent from "../../../components/common/DataGrid";
 import { EColumnsKPIEmployee } from "./constants";
-import ModalComponent from "../../components/common/Modal";
+import ModalComponent from "../../../components/common/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalAssignKpieEmployee } from "../../reduxs/kpiEmployee/kpiEmployeeSlice";
+import { setModalAssignKpieEmployee } from "../../../reduxs/kpiEmployee/kpiEmployeeSlice";
 import ModalAssignEmp from "./ModalAssignEmp";
 
 const KPIEmployeePage = () => {

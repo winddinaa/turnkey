@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "../../components/common/Container";
+import Container from "../../../components/common/Container";
 
-import DataGridComponent from "../../components/common/DataGrid";
+import DataGridComponent from "../../../components/common/DataGrid";
 import { useSelector } from "react-redux";
 import Header from "./Header";
 import { EColumnsHistory } from "./constants";

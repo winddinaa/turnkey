@@ -1,4 +1,4 @@
-import { DeleteIcon, DotIcon, EditIcon, ViewIcon } from "../../components/Icon";
+import { ViewIcon } from "../../../components/Icon";
 
 export const EColumnsHistory = () => [
   { field: "id", headerName: "History id" },

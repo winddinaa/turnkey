@@ -2,12 +2,12 @@ import { Typography } from "@material-tailwind/react";
 import { Formik } from "formik";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SelectMultiComponent from "../../components/Input/SelectMultiComponent";
-import { EBool } from "../../constants/enum";
-import ButtonComponent from "../../components/common/Button";
-import DataGridComponent from "../../components/common/DataGrid";
+import { EBool } from "../../../constants/enum";
+import ButtonComponent from "../../../components/common/Button";
+import DataGridComponent from "../../../components/common/DataGrid";
 import { EColumnEmployee } from "./constants";
-import { setModalAssignKpieEmployee } from "../../reduxs/kpiEmployee/kpiEmployeeSlice";
+import { SelectMultiComponent } from "../../../components/Input";
+import { setModalAssignKpieEmployee } from "../../../reduxs/kpiEmployee/kpiEmployeeSlice";
 
 export const mockDepartment = [
   {

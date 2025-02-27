@@ -12,26 +12,28 @@ import Performance from "./pages/Performance";
 import Department from "./pages/Department";
 import Department_2 from "./pages/Department_2";
 import KPILevel from "./pages/KPILevel";
-import { useState } from "react";
 import Sub2 from "./pages/Sub2";
 import Employee from "./pages/Employee";
 import Employee_2 from "./pages/Employee_2";
-import Sidebar from "./components/Layout/Sidebar";
 import { EPathPage } from "./constants/enum";
-import AreaPage from "./pages/Area";
+import AreaPage from "./pages/Admin/Area";
 import LayOut from "./components/Layout";
-import WrapLayout from "./components/WrapLayout";
-import KPIDepartmentPage from "./pages/KPIDepartment";
-import KPIEmployeePage from "./pages/KPIEmployee";
-import KPIHistoryPage from "./pages/KPIHistory";
+import WrapLayout from "./core/WrapLayout";
+import KPIDepartmentPage from "./pages/Admin/KPIDepartment";
+import KPIEmployeePage from "./pages/Admin/KPIEmployee";
+import KPIHistoryPage from "./pages/Admin/KPIHistory";
 import LoginPage from "./pages/Login";
 function App() {
-  const [language, setLanguage] = useState("EN");
-
-  const handleLanguageChange = (e) => {
-    const newLang = e.target.value;
-    setLanguage(newLang);
+  const adminRoute = () => {
+    return (
+      <>
+        <Route path="/admin-kpis-department" element={<KPIDepartmentPage />} />
+        <Route path="/admin-kpis-employee" element={<KPIEmployeePage />} />
+        <Route path="/admin-kpis-history" element={<KPIHistoryPage />} />
+      </>
+    );
   };
+
   return (
     <WrapLayout>
       <LayOut>
@@ -43,9 +45,7 @@ function App() {
           <Route path="/Employee" element={<Employee />} />
           <Route path="/Employee/2" element={<Employee_2 />} />
           <Route path="/KPILevel" element={<KPILevel />} />
-          <Route path="/kpis-department" element={<KPIDepartmentPage />} />
-          <Route path="/kpis-employee" element={<KPIEmployeePage />} />
-          <Route path="/kpis-history" element={<KPIHistoryPage />} />
+          {adminRoute()}
           <Route path="/SubCategory/2" element={<Sub2 />} />
           <Route path="/Department" element={<Department />} />
           <Route path="/Department/2" element={<Department_2 />} />

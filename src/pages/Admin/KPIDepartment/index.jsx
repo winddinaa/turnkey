@@ -1,25 +1,25 @@
 import React from "react";
-import Container from "../../components/common/Container";
+import Container from "../../../components/common/Container";
 
 import Header from "./Header";
-import DataGridComponent from "../../components/common/DataGrid";
+import DataGridComponent from "../../../components/common/DataGrid";
 import {
   EColumnsKPIDepartment,
   mockArea,
   mockCategory,
   mockKPI,
 } from "./constants";
-import ModalComponent from "../../components/common/Modal";
+import ModalComponent from "../../../components/common/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setModalAssignKpiDepartment,
   setDataModalAssignDepartment,
   setModalDeleteAssignDepartment,
-} from "../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { EBool, EMode, ESelectType } from "../../constants/enum";
+} from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import { EBool, EMode, ESelectType } from "../../../constants/enum";
 import ModalAssign from "./ModalAssign";
 import ModalDelete from "./ModalDelete";
-import { convertStringToArray, filterValueSelect } from "../../utils/helper";
+import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
@@ -77,7 +77,6 @@ const KPIDepartmentPage = () => {
   const onDelete = (e) => {
     dispatch(setModalDeleteAssignDepartment(true));
   };
-  console.log("=> kpiDeptRedux1", kpiDeptRedux);
 
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">

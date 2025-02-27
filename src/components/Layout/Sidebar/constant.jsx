@@ -13,6 +13,7 @@ export const sideMenu = [
       { title: "KPIs", href: "" },
       { title: "Department", href: "" },
       { title: "Employee", href: "" },
+      { title: "Assignment", href: "" },
     ],
   },
   {
@@ -20,9 +21,9 @@ export const sideMenu = [
     keyOpen: 3,
     icon: PieIcon,
     submenu: [
-      { title: "KPIs Department", href: "kpis-department" },
-      { title: "KPIs Employee", href: "kpis-employee" },
-      { title: "KPIs History", href: "kpis-history" },
+      { title: "KPIs Department", href: "admin-kpis-department" },
+      { title: "KPIs Employee", href: "admin-kpis-employee" },
+      { title: "KPIs History", href: "admin-kpis-history" },
     ],
   },
   {
