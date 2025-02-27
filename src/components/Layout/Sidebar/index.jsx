@@ -19,7 +19,7 @@ export default function Sidebar() {
       className={`${sidebarRedux.drawer ? "block" : "hidden"} min-h-screen`}
     >
       <nav className="min-h-screen flex flex-col bg-white border-r shadow-sm">
-        <div className="p-4 pe-8 pb-2 flex justify-between items-center">
+        <div className="p-4 pe-8 pb-2 flex justify-between items-center h-[7vh]">
           <LogoIcon />
         </div>
         {authRedux.permission.includes(ERoles.admin) ? (
