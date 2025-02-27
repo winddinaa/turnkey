@@ -5,13 +5,14 @@ import {
   ViewIcon,
 } from "../../../components/Icon";
 
-export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
-  { field: "id", headerName: "No." },
-  { field: "department", headerName: "Department Name", flex: 1 },
-  { field: "kpis", headerName: "KPIs", flex: 1 },
-  { field: "categories", headerName: "Category Name", flex: 1 },
-  { field: "area", headerName: "Area Name", flex: 1 },
-  { field: "type", headerName: "Type", flex: 1 },
+export const EColumnsAssignment = (onView, onEdit, onDelete) => [
+  { field: "assignmentId", headerName: "Assignment ID" },
+  { field: "assignmenttypeId", headerName: "Assignment Type", flex: 1 },
+  { field: "assignmentName", headerName: "Assignment Name", flex: 1 },
+  { field: "description", headerName: "Description", flex: 1 },
+  { field: "fiscalYear", headerName: "Fiscal Year", flex: 1 },
+  { field: "startDate", headerName: "Start Evaluation Date", flex: 1 },
+  { field: "endDate", headerName: "End Evaluation Date", flex: 1 },
   {
     field: "status",
     headerName: "Status",
@@ -89,11 +90,12 @@ export const mockStatus = [
 ];
 
 export const rows = Array.from({ length: 50 }, (_, i) => ({
-  id: i + 1,
-  department: `Department${i + 1}`,
-  kpis: `KPIs ${i + 1}`,
-  categories: `Category ${i + 1}`,
-  area: `Area ${i + 1}`,
-  type: `Type ${i + 1}`,
-  status: "active",
+  assignmentId: i + 1,
+  assignmenttypeId: `Assignment Type${i + 1}`,
+  assignmentName: `Assignment Name ${i + 1}`,
+  description: `Description ${i + 1}`,
+  fiscalYear: `Fiscal Year ${i + 1}`,
+  startDate: new Date(),
+  endDate: new Date(),
+  status: "Reviewing",
 }));

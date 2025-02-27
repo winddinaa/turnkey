@@ -8,6 +8,7 @@ import {
   mockArea,
   mockCategory,
   mockKPI,
+  rows,
 } from "./constants";
 import ModalComponent from "../../../components/common/Modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,15 +25,7 @@ import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
   const dispatch = useDispatch();
-  const rows = Array.from({ length: 50 }, (_, i) => ({
-    id: i + 1,
-    department: `Department${i + 1}`,
-    kpis: `KPIs ${i + 1}`,
-    categories: `Category ${i + 1}`,
-    area: `Area ${i + 1}`,
-    type: `Type ${i + 1}`,
-    status: "active",
-  }));
+
   const onView = (e) => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.view, open: EBool.true })
@@ -51,10 +44,6 @@ const KPIDepartmentPage = () => {
       ),
       area: filterValueSelect(e.area, mockArea, ESelectType.single),
     };
-    console.log("=> e", e);
-
-    console.log("=> bodyShow", bodyShow);
-
     dispatch(setDataModalAssignDepartment(bodyShow));
   };
 

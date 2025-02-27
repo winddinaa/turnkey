@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { sideMenu, sideMenuEmployee } from "./constant";
-import { EPathPage } from "../../../constants/enum";
+import { EPathPageAdmin } from "../../../constants/enum";
 
 const SidebarEmployee = () => {
   const [roleMenuOpen, setRoleMenuOpen] = React.useState(100);
@@ -65,7 +65,7 @@ const SidebarEmployee = () => {
           return (
             <Link
               key={`sidebar-main-${index.toString()}`}
-              to={`/${EPathPage.area}`}
+              to={`/${EPathPageAdmin.area}`}
             >
               <ListItem>
                 <ListItemPrefix>

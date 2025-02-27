@@ -15,7 +15,7 @@ import KPILevel from "./pages/KPILevel";
 import Sub2 from "./pages/Sub2";
 import Employee from "./pages/Employee";
 import Employee_2 from "./pages/Employee_2";
-import { EPathPage } from "./constants/enum";
+import { EPathPageAdmin } from "./constants/enum";
 import AreaPage from "./pages/Admin/Area";
 import LayOut from "./components/Layout";
 import WrapLayout from "./core/WrapLayout";
@@ -23,6 +23,7 @@ import KPIDepartmentPage from "./pages/Admin/KPIDepartment";
 import KPIEmployeePage from "./pages/Admin/KPIEmployee";
 import KPIHistoryPage from "./pages/Admin/KPIHistory";
 import LoginPage from "./pages/Login";
+import AssignmentPage from "./pages/Admin/Assignment";
 function App() {
   const adminRoute = () => {
     return (
@@ -30,6 +31,10 @@ function App() {
         <Route path="/admin-kpis-department" element={<KPIDepartmentPage />} />
         <Route path="/admin-kpis-employee" element={<KPIEmployeePage />} />
         <Route path="/admin-kpis-history" element={<KPIHistoryPage />} />
+        <Route
+          path={`/${EPathPageAdmin.assignMent}`}
+          element={<AssignmentPage />}
+        />
       </>
     );
   };
@@ -41,7 +46,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Management" element={<Management />} />
-          <Route path={`/${EPathPage.area}`} element={<AreaPage />} />
+          <Route path={`/${EPathPageAdmin.area}`} element={<AreaPage />} />
           <Route path="/Employee" element={<Employee />} />
           <Route path="/Employee/2" element={<Employee_2 />} />
           <Route path="/KPILevel" element={<KPILevel />} />

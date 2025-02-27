@@ -16,7 +16,7 @@ export default function Sidebar() {
   const authRedux = useSelector((state) => state.auth);
   return (
     <aside
-      className={`${sidebarRedux.drawer ? "flex" : "hidden"} min-h-screen`}
+      className={`${sidebarRedux.drawer ? "block" : "hidden"} min-h-screen`}
     >
       <nav className="min-h-screen flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pe-8 pb-2 flex justify-between items-center">

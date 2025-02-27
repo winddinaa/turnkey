@@ -1,5 +1,6 @@
-export const EPathPage = {
+export const EPathPageAdmin = {
   area: "AreaLevel",
+  assignMent: "assignMent",
 };
 
 export const EBool = {

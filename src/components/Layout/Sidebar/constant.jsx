@@ -1,4 +1,4 @@
-import { EPathPage } from "../../../constants/enum";
+import { EPathPageAdmin } from "../../../constants/enum";
 import { ManageIcon, MeasurementIcon, PieIcon, ReportIcon } from "../../Icon";
 import SettingIcon from "../../Icon/SettingIcon";
 
@@ -8,12 +8,12 @@ export const sideMenu = [
     keyOpen: 1,
     icon: ManageIcon,
     submenu: [
-      { title: "Area", href: EPathPage.area },
+      { title: "Area", href: EPathPageAdmin.area },
       { title: "Category", href: "" },
       { title: "KPIs", href: "" },
       { title: "Department", href: "" },
       { title: "Employee", href: "" },
-      { title: "Assignment", href: "" },
+      { title: "Assignment", href: EPathPageAdmin.assignMent },
     ],
   },
   {

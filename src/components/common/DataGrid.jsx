@@ -13,13 +13,17 @@ const DataGridComponent = ({
     { id: 3, col1: "MUI", col2: "is Amazing" },
   ],
   checkboxSelection = false,
+  getRowId,
 }) => {
   return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      checkboxSelection={checkboxSelection}
-    />
+    <div className="h-[80%] w-[100%] overflow-x-auto">
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        checkboxSelection={checkboxSelection}
+        getRowId={getRowId}
+      />
+    </div>
   );
 };
 
