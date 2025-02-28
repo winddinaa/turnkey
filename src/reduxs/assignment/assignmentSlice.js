@@ -5,6 +5,7 @@ const initialState = {
     mode: "",
     open: false,
   },
+  openModalDelete: false,
   dataModal: undefined,
 };
 
@@ -12,14 +13,18 @@ const assignmentSlice = createSlice({
   name: "assignment",
   initialState,
   reducers: {
-    setModalAssignment(state, action) {
+    setAssignmentModal(state, action) {
       state.openModal = action.payload;
     },
     setAssignDataModal(state, action) {
       state.dataModal = action.payload;
     },
+    setAssignmentDeleteModal(state, action) {
+      state.openModalDelete = action.payload;
+    },
     clearAssignment(state, action) {
       state.dataModal = undefined;
+      state.openModalDelete = false;
       state.openModal = {
         mode: "",
         open: false,
@@ -28,6 +33,10 @@ const assignmentSlice = createSlice({
   },
 });
 
-export const { setModalAssignment, setAssignDataModal, clearAssignment } =
-  assignmentSlice.actions;
+export const {
+  setAssignmentModal,
+  setAssignDataModal,
+  clearAssignment,
+  setAssignmentDeleteModal,
+} = assignmentSlice.actions;
 export default assignmentSlice.reducer;

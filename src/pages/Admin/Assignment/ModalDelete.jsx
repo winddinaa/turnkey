@@ -10,7 +10,7 @@ const ModalDelete = () => {
     <div className="flex flex-col justify-center items-center text-center min-h-[40vh] ">
       <div className="py-10">
         <Typography variant="p">
-          Are you sure you want to delete KPIs Department? this action cannot be
+          Are you sure you want to delete Assignment? this action cannot be
           undone.
         </Typography>
       </div>

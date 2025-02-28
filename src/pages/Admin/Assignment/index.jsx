@@ -7,15 +7,17 @@ import ModalAssignment from "./ModalAssignment";
 import {
   clearAssignment,
   setAssignDataModal,
-  setModalAssignment,
+  setAssignmentDeleteModal,
+  setAssignmentModal,
 } from "../../../reduxs/assignment/assignmentSlice";
 import {
   Container,
   DataGridComponent,
   ModalComponent,
 } from "../../../components/common";
-import { EMode } from "../../../constants/enum";
+import { EBool, EMode } from "../../../constants/enum";
 import isEmpty from "is-empty";
+import ModalDelete from "./ModalDelete";
 
 const AssignmentPage = () => {
   const dishpatch = useDispatch();
@@ -29,7 +31,7 @@ const AssignmentPage = () => {
           date: [e.startDate, e.endDate],
         })
       );
-      dishpatch(setModalAssignment({ mode: EMode.view, open: true }));
+      dishpatch(setAssignmentModal({ mode: EMode.view, open: EBool.true }));
     }
   };
   const onEdit = (e) => {
@@ -40,10 +42,20 @@ const AssignmentPage = () => {
           date: [e.startDate, e.endDate],
         })
       );
-      dishpatch(setModalAssignment({ mode: EMode.edit, open: true }));
+      dishpatch(setAssignmentModal({ mode: EMode.edit, open: EBool.true }));
     }
   };
-  const onDelete = () => {};
+  const onDelete = (e) => {
+    if (!isEmpty(e)) {
+      dishpatch(
+        setAssignDataModal({
+          ...e,
+          date: [e.startDate, e.endDate],
+        })
+      );
+      dishpatch(setAssignmentDeleteModal(EBool.true));
+    }
+  };
   console.log("=> assignRedux", assignRedux);
 
   return (
@@ -64,6 +76,15 @@ const AssignmentPage = () => {
         }}
       >
         <ModalAssignment />
+      </ModalComponent>
+      <ModalComponent
+        title="Assignment"
+        open={assignRedux.openModalDelete}
+        handleClose={() => {
+          dishpatch(clearAssignment());
+        }}
+      >
+        <ModalDelete />
       </ModalComponent>
     </Container>
   );

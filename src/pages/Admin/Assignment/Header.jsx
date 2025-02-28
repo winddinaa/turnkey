@@ -5,7 +5,7 @@ import { PlusIcon, SearchIcon } from "../../../components/Icon";
 import ButtonComponent from "../../../components/common/Button";
 import { useDispatch } from "react-redux";
 import { EBool, EMode } from "../../../constants/enum";
-import { setModalAssignment } from "../../../reduxs/assignment/assignmentSlice";
+import { setAssignmentModal } from "../../../reduxs/assignment/assignmentSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Header = () => {
             className="bg-primary"
             onClick={() => {
               dispatch(
-                setModalAssignment({
+                setAssignmentModal({
                   mode: EMode.add,
                   open: EBool.true,
                 })
