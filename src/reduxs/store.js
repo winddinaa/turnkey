@@ -4,6 +4,7 @@ import sideBarReducer from "./sidebar/sidebarSlice";
 import kpiDeptReducer from "./kpiDepartment/kpiDepartmentSlice";
 import kpiEmpReducer from "./kpiEmployee/kpiEmployeeSlice";
 import authReducer from "./auth/authSlice";
+import assignReducer from "./assignment/assignmentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     kpiDept: kpiDeptReducer,
     kpiEmp: kpiEmpReducer,
     auth: authReducer,
+    assign: assignReducer,
   },
 });

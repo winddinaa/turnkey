@@ -1,4 +1,9 @@
-import { Dialog, DialogBody, DialogHeader } from "@material-tailwind/react";
+import {
+  Dialog,
+  DialogBody,
+  DialogFooter,
+  DialogHeader,
+} from "@material-tailwind/react";
 import { Divider } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
@@ -13,11 +18,12 @@ const ModalComponent = ({
 }) => {
   return (
     <Dialog open={open} handler={handleClose}>
-      <DialogHeader>{title}</DialogHeader>
+      <DialogHeader className="text-textPrimary">{title}</DialogHeader>
       <Divider />
-      <DialogBody className="max-h-[80vh]  gap-5 overflow-y-auto  ">
+      <DialogBody className="min-h-[50vh] max-h-[80vh]  gap-5 overflow-y-auto">
         {children}
       </DialogBody>
+      <DialogFooter></DialogFooter>
     </Dialog>
   );
 };

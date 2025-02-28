@@ -4,8 +4,8 @@ import InputComponent from "../../../components/Input/InputComponent";
 import { PlusIcon, SearchIcon } from "../../../components/Icon";
 import ButtonComponent from "../../../components/common/Button";
 import { useDispatch } from "react-redux";
-import { setModalAssignKpiDepartment } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
 import { EBool, EMode } from "../../../constants/enum";
+import { setModalAssignment } from "../../../reduxs/assignment/assignmentSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Header = () => {
             className="bg-primary"
             onClick={() => {
               dispatch(
-                setModalAssignKpiDepartment({
+                setModalAssignment({
                   mode: EMode.add,
                   open: EBool.true,
                 })

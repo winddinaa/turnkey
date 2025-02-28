@@ -45,7 +45,7 @@ export const EColumnsAssignment = (onView, onEdit, onDelete) => [
   },
 ];
 
-export const mockKPI = [
+export const mockAssignmentType = [
   {
     value: "kpis1",
     label: "KPIs 1",
@@ -56,14 +56,14 @@ export const mockKPI = [
   },
 ];
 
-export const mockCategory = [
+export const mockFiscal = [
   {
-    value: "category1",
-    label: "Category 1",
+    value: "2025",
+    label: "2025",
   },
   {
-    value: "category2",
-    label: "Category 2",
+    value: "2026",
+    label: "2026",
   },
 ];
 

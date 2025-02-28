@@ -15,7 +15,9 @@ const InputComponent = ({
     <Input
       label={label ? label : undefined}
       className={`${
-        !label ? "!border-t-blue-gray-200 focus:!border-t-gray-900" : ""
+        !label
+          ? "!border-t-blue-gray-200 focus:!border-primary rounded-md border "
+          : ""
       } ${className}`}
       labelProps={
         !label

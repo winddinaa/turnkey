@@ -11,6 +11,7 @@ module.exports = withMT({
         localLightGreen: "#2B8A8A",
         localError: "#DC2626",
         primary: "#4F46E5",
+        textPrimary: "#262C4D",
       },
     },
   },
