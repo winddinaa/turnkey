@@ -21,6 +21,7 @@ import { EBool, EMode, ESelectType } from "../../../constants/enum";
 import ModalAssign from "./ModalAssign";
 import ModalDelete from "./ModalDelete";
 import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
+import TableCollape from "../../../components/common/TableCollape";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
@@ -70,10 +71,11 @@ const KPIDepartmentPage = () => {
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">
       <Header />
-      <DataGridComponent
+      <TableCollape />
+      {/* <DataGridComponent
         rows={rows}
         columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
-      />
+      /> */}
       <ModalComponent
         open={kpiDeptRedux.openModal.open}
         title={`${kpiDeptRedux.openModal.mode} KPIs Department`}
