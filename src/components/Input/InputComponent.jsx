@@ -9,6 +9,7 @@ const InputComponent = ({
   placeholder = "input ",
   variant = "outlined",
   onChange,
+  disabled = false,
   ...rest
 }) => {
   return (
@@ -30,6 +31,7 @@ const InputComponent = ({
       icon={icon}
       variant={variant}
       onChange={onChange}
+      disabled={disabled}
       {...rest}
     />
   );
@@ -42,5 +44,6 @@ InputComponent.propTypes = {
   placeholder: PropTypes.string,
   variant: PropTypes.string,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 export default InputComponent;

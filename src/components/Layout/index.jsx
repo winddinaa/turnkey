@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 const LayOut = ({ children }) => {
   const location = useLocation();
-  console.log("=> location ", location.pathname);
 
   if (location.pathname.toLocaleLowerCase() === "/login") {
     return <>{children}</>;

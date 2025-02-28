@@ -1,9 +1,11 @@
+import dayjs from "dayjs";
 import {
   DeleteIcon,
   DotIcon,
   EditIcon,
   ViewIcon,
 } from "../../../components/Icon";
+import { EFormateDate } from "../../../constants/enum";
 
 export const EColumnsAssignment = (onView, onEdit, onDelete) => [
   { field: "assignmentId", headerName: "Assignment ID" },
@@ -47,12 +49,12 @@ export const EColumnsAssignment = (onView, onEdit, onDelete) => [
 
 export const mockAssignmentType = [
   {
-    value: "kpis1",
-    label: "KPIs 1",
+    value: "as-001",
+    label: "as-001",
   },
   {
-    value: "kpi2",
-    label: "KPI 2",
+    value: "as-002",
+    label: "as-002",
   },
 ];
 
@@ -91,11 +93,11 @@ export const mockStatus = [
 
 export const rows = Array.from({ length: 50 }, (_, i) => ({
   assignmentId: i + 1,
-  assignmenttypeId: `Assignment Type${i + 1}`,
+  assignmenttypeId: `as-00${i + 1}`,
   assignmentName: `Assignment Name ${i + 1}`,
   description: `Description ${i + 1}`,
-  fiscalYear: `Fiscal Year ${i + 1}`,
-  startDate: new Date(),
-  endDate: new Date(),
+  fiscalYear: `2025`,
+  startDate: dayjs(new Date()).format(EFormateDate.date),
+  endDate: dayjs(new Date()).add(2, "day").format(EFormateDate.date),
   status: "Reviewing",
 }));

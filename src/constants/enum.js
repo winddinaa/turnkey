@@ -23,3 +23,7 @@ export const ERoles = {
   admin: "admin",
   employee: "employee",
 };
+
+export const EFormateDate = {
+  date: "YYYY-MM-DD",
+};

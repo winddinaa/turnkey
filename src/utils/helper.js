@@ -1,5 +1,6 @@
 import isEmpty from "is-empty";
 import { ESelectType } from "../constants/enum";
+import { get } from "lodash";
 
 export const convertStringToArray = (string) => {
   if (!string) return []; // กรณีค่าว่าง
@@ -18,4 +19,20 @@ export const filterValueSelect = (values, option, type) => {
     console.log("=> values", values);
     option.find((itemFind) => itemFind.label === values);
   }
+};
+
+export const getFieldProps = (key, form, options = {}) => {
+  return {
+    name: key,
+    value: get(form.values, key),
+    error: get(form.errors, key),
+    touched: get(form.touched, key),
+    onChange: form.handleChange,
+    onBlur: form.handleBlur,
+    onReset: form.handleReset,
+    setFieldValue: form.setFieldValue,
+    setFieldTouched: form.setFieldTouched,
+    setFieldError: form.setFieldError,
+    ...options,
+  };
 };

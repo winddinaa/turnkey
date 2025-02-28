@@ -3,18 +3,20 @@ import PropTypes from "prop-types";
 import React from "react";
 const { RangePicker } = DatePicker;
 
-const DatePickerComponent = ({ onChange, ...rest }) => {
+const DatePickerComponent = ({ onChange, disabled = false, ...rest }) => {
   return (
     <RangePicker
       onChange={onChange}
+      disabled={disabled}
+      className="border-blue-gray-200 focus:border-primary hover:border-primary active:border-tertiary"
       {...rest}
-      className="border-primary focus:ring-2 focus:ring-primary hover:border-primary active:border-tertiary"
     />
   );
 };
 
 DatePickerComponent.propTypes = {
   onChange: PropTypes.func,
+  disable: PropTypes.bool,
 };
 
 export default DatePickerComponent;
