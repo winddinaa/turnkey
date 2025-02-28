@@ -109,9 +109,12 @@ const ModalAssignment = () => {
             <DatePickerComponent
               disabled={isDisabled}
               name="date"
-              value={values.date.map((itemValue) => {
-                return dayjs(itemValue);
-              })}
+              value={
+                values.date &&
+                values.date.map((itemValue) => {
+                  return dayjs(itemValue);
+                })
+              }
               onChange={(selectedOption) => {
                 handleChange({
                   target: {
