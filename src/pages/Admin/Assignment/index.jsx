@@ -32,7 +32,12 @@ const AssignmentPage = () => {
         title="Assignment"
         open={assignRedux.openModal.open}
         handleClose={() => {
-          dishpatch(setModalAssignment(EBool.false));
+          dishpatch(
+            setModalAssignment({
+              mode: "",
+              open: EBool.false,
+            })
+          );
         }}
       >
         <ModalAssignment />

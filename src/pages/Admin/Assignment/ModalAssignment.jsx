@@ -1,9 +1,13 @@
 import React from "react";
 import FormFormik from "../../../components/common/FormFormik";
-import { InputComponent, SelectComponent } from "../../../components/Input";
+import {
+  DatePickerComponent,
+  InputComponent,
+  SelectComponent,
+} from "../../../components/Input";
 import { mockAssignmentType, mockFiscal } from "./constants";
-import { Typography } from "@material-tailwind/react";
 import { TextComponent } from "../../../components/common";
+import ButtonComponent from "../../../components/common/Button";
 
 const ModalAssignment = () => {
   return (
@@ -27,6 +31,13 @@ const ModalAssignment = () => {
       <TextComponent variant="h6" color="blue-gray" className="-mb-3">
         Deadline
       </TextComponent>
+      <DatePickerComponent />
+      <div className="flex flex-row gap-5 justify-center items-center mt-10">
+        <ButtonComponent className="bg-localGreen w-button-default">
+          Save Draft
+        </ButtonComponent>
+        <ButtonComponent className=" w-button-default">Submit</ButtonComponent>
+      </div>
     </FormFormik>
   );
 };

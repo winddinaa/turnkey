@@ -23,7 +23,9 @@ const ModalComponent = ({
       <DialogBody className="min-h-[50vh] max-h-[80vh]  gap-5 overflow-y-auto">
         {children}
       </DialogBody>
-      <DialogFooter></DialogFooter>
+      <DialogFooter>
+        <></>
+      </DialogFooter>
     </Dialog>
   );
 };
