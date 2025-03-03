@@ -20,7 +20,6 @@ const KPIEmployeePage = () => {
   }));
   const dispatch = useDispatch();
   const kpiEmpRedux = useSelector((state) => state.kpiEmp);
-  console.log("=> kpiEmpRedux", kpiEmpRedux);
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">
       <Header />

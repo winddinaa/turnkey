@@ -58,7 +58,6 @@ const ModalAssignEmp = () => {
         employee: [],
       }}
       onSubmit={(values, { setSubmitting }) => {
-        console.log("=>values", values);
         dispatch(setModalAssignKpieEmployee(false));
         setTimeout(() => {
           setSubmitting(false);
@@ -118,7 +117,6 @@ const ModalAssignEmp = () => {
             rows={values.employee}
             columns={EColumnEmployee()}
           />
-          {console.log("=> value", values)}
 
           <div className="flex flex-row items-center justify-center gap-2">
             <ButtonComponent

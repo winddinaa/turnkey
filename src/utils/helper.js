@@ -15,8 +15,6 @@ export const filterValueSelect = (values, option, type) => {
     return option.filter((itemFilter) => values.includes(itemFilter.label));
   }
   if (type === ESelectType.single) {
-    console.log("=> option", option);
-    console.log("=> values", values);
     option.find((itemFind) => itemFind.label === values);
   }
 };

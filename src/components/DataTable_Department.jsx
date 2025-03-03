@@ -1,11 +1,11 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
-import Switch from '../components/Switch'
-import Department_2 from '../pages/Department_2'
+import Switch from "../components/Switch";
+import Department_2 from "../pages/Department_2";
 const DataTable_Department = ({ headers = [], data = [] }) => {
-    console.log("Headers:", headers);
-    console.log("Data:", data);
+  console.log("Headers:", headers);
+  console.log("Data:", data);
   const [selectedRows, setSelectedRows] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -56,14 +56,13 @@ const DataTable_Department = ({ headers = [], data = [] }) => {
   ];
   const navigate = useNavigate();
   const goToDetailWithState = () => {
-    navigate('/Department/2', {state: { from: 'Department_2'}});
-  }
+    navigate("/Department/2", { state: { from: "Department_2" } });
+  };
   return (
     <div className="overflow-x-auto">
       <table className="bg-white table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
-           
             {headers.map((header, index) => (
               <th
                 key={index}
@@ -81,13 +80,13 @@ const DataTable_Department = ({ headers = [], data = [] }) => {
                 colSpan={headers.length + 1}
                 className="text-center px-4 py-6 text-gray-500 text-xl font-semibold"
               >
-                <p className="mt-10" onClick={goToDetailWithState}>No Department Available</p>
-               
+                <p className="mt-10" onClick={goToDetailWithState}>
+                  No Department Available
+                </p>
               </td>
             </tr>
           ) : (
             data.map((row, rowIndex) => (
-            
               <tr
                 key={rowIndex}
                 className={rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"}
@@ -102,10 +101,7 @@ const DataTable_Department = ({ headers = [], data = [] }) => {
                   />
                 </td>
                 {row.map((cell, cellIndex) => (
-                  <td
-                    key={cellIndex}
-                    className="px-4 py-2 text-gray-700"
-                  >
+                  <td key={cellIndex} className="px-4 py-2 text-gray-700">
                     {cell}
                   </td>
                 ))}

@@ -1,38 +1,38 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
 import InputComponent from "../../../components/Input/InputComponent";
-import { PlusIcon, SearchIcon } from "../../../components/Icon";
+import { SearchIcon } from "../../../components/Icon";
 import ButtonComponent from "../../../components/common/Button";
-import { useDispatch } from "react-redux";
-import { setModalAssignKpiDepartment } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { EBool, EMode } from "../../../constants/enum";
+import { useDispatch, useSelector } from "react-redux";
+import { setAssignDepartmentDraft } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
+import TextComponent from "../../../components/common/Text";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const kpiDeptRedux = useSelector((state) => state.kpiDept);
   return (
     <div className="w-[100%]">
-      <Typography variant="h3">Assign KPIs Department</Typography>
+      <TextComponent variant="h3">Assign KPIs Department</TextComponent>
       <div
         className="flex 
-     w-[100%] justify-between items-center"
+     w-[100%] justify-between items-center mb-5"
       >
         <div className="py-5 w-[50%]">
           <InputComponent label="Department code" icon={<SearchIcon />} />
         </div>
         <div>
           <ButtonComponent
+            className={`${
+              kpiDeptRedux.isDraft ? "bg-primary" : "bg-localGreen"
+            }`}
             onClick={() => {
-              dispatch(
-                setModalAssignKpiDepartment({
-                  mode: EMode.add,
-                  open: EBool.true,
-                })
-              );
+              dispatch(setAssignDepartmentDraft(!kpiDeptRedux.isDraft));
             }}
           >
             <div className="flex items-center justify-center">
-              <PlusIcon />
-              <Typography variant="h6">Assign KPIs</Typography>
+              <Typography variant="h6">
+                {kpiDeptRedux.isDraft ? "Assignment" : "My draft"}
+              </Typography>
             </div>
           </ButtonComponent>
         </div>

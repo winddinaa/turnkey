@@ -7,13 +7,14 @@ import { useDispatch } from "react-redux";
 
 import { setModalAssignKpieEmployee } from "../../../reduxs/kpiEmployee/kpiEmployeeSlice";
 import { EBool } from "../../../constants/enum";
+import TextComponent from "../../../components/common/Text";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   return (
     <div className="w-[100%]">
-      <Typography variant="h3">Assign KPIs Employee</Typography>
+      <TextComponent variant="h3">Assign KPIs Employee</TextComponent>
       <div
         className="flex 
       w-[100%] justify-between items-center"

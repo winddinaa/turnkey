@@ -21,9 +21,8 @@ const SelectComponent = ({
       <Select
         classNames={{
           control: ({ isFocused }) => {
-            console.log("=> isFocused", isFocused);
             return twMerge(
-              "border rounded-md p-2 transition-all",
+              "border rounded-md  transition-all",
               "border-gray-300 bg-white shadow-sm",
               isFocused && "!border-primary ring-2 ring-primary ",
               isDisabled && "bg-gray-100 cursor-not-allowed opacity-50",

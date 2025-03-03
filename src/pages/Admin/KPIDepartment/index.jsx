@@ -22,11 +22,11 @@ import ModalAssign from "./ModalAssign";
 import ModalDelete from "./ModalDelete";
 import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
 import TableCollape from "../../../components/common/TableCollape";
+import ButtonComponent from "../../../components/common/Button";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
   const dispatch = useDispatch();
-
   const onView = (e) => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.view, open: EBool.true })
@@ -68,14 +68,77 @@ const KPIDepartmentPage = () => {
     dispatch(setModalDeleteAssignDepartment(true));
   };
 
+  const handleOnClickAssign = (e) => {
+    dispatch(
+      setModalAssignKpiDepartment({
+        mode: EMode.add,
+        open: EBool.true,
+      })
+    );
+  };
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">
       <Header />
-      <TableCollape />
-      {/* <DataGridComponent
-        rows={rows}
-        columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
-      /> */}
+      <TableCollape
+        isCollaps
+        onRowData={handleOnClickAssign}
+        columns={
+          kpiDeptRedux.isDraft
+            ? [
+                "Assign ID",
+                "Start  Evaluation Date",
+                "End  Evaluation Date",
+                "Type",
+                "Status",
+              ]
+            : [
+                "Assign ID",
+                "Start  Evaluation Date",
+                "End  Evaluation Date",
+                "Type",
+                "Status",
+                "KPIs Department",
+              ]
+        }
+        rows={
+          kpiDeptRedux.isDraft
+            ? Array.from({ length: 9 }, (_, i) => ({
+                assign: `Assign${i + 1}`,
+                start: `2025-08-01`,
+                end: `2025-12-31`,
+                type: `type ${i + 1}`,
+                status: `Status ${i + 1}`,
+                expandCollape: (
+                  <DataGridComponent
+                    rows={rows}
+                    columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
+                  />
+                ),
+              }))
+            : Array.from({ length: 9 }, (_, i) => ({
+                assign: `Assign${i + 1}`,
+                start: `2025-08-01`,
+                end: `2025-12-31`,
+                type: `type ${i + 1}`,
+                status: `Status ${i + 1}`,
+                action: (
+                  <ButtonComponent
+                    className="w-[100px] min-w-[100px] min"
+                    onClick={(e) => {}}
+                  >
+                    Assign
+                  </ButtonComponent>
+                ),
+                expandCollape: (
+                  <DataGridComponent
+                    rows={rows}
+                    columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
+                  />
+                ),
+              }))
+        }
+      />
+
       <ModalComponent
         open={kpiDeptRedux.openModal.open}
         title={`${kpiDeptRedux.openModal.mode} KPIs Department`}

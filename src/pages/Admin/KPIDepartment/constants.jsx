@@ -5,6 +5,9 @@ import {
   ViewIcon,
 } from "../../../components/Icon";
 
+export const init = {
+  items: [{ department: {}, area: {}, category: [], kpis: [] }],
+};
 export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
   { field: "id", headerName: "No." },
   { field: "department", headerName: "Department Name", flex: 1 },

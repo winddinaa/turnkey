@@ -1,16 +1,17 @@
 import React from "react";
-import { Formik } from "formik";
+import { FieldArray, Formik } from "formik";
 import ButtonComponent from "../../../components/common/Button";
-import { EBool, EMode, ESelectType } from "../../../constants/enum";
+import { EBool, EMode } from "../../../constants/enum";
 import { Typography } from "@material-tailwind/react";
 import SelectMultiComponent from "../../../components/Input/SelectMultiComponent";
 import SelectComponent from "../../../components/Input/SelectComponent";
 import { DateRangePicker } from "react-date-range";
 import { useDispatch, useSelector } from "react-redux";
 import { clearModalAssignDepartment } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
+import { init, mockArea, mockCategory, mockKPI, mockStatus } from "./constants";
 import isEmpty from "is-empty";
-import { mockArea, mockCategory, mockKPI, mockStatus } from "./constants";
+import { TextComponent } from "../../../components/common";
+import { Divider } from "@mui/material";
 
 export const mockDepartMent = [
   {
@@ -35,180 +36,164 @@ const ModalAssign = () => {
   return (
     <Formik
       initialValues={
-        kpiDeptRedux.dataModal
-          ? kpiDeptRedux.dataModal
-          : {
-              department: {
-                value: "",
-                label: "",
-              },
-
-              category: [],
-              kpis: "",
-              area: {
-                value: "",
-                label: "",
-              },
-              selectionRange: {
-                startDate: dateFrom,
-                endDate: dateTo,
-                key: "selection",
-              },
-            }
+        !isEmpty(kpiDeptRedux.dataModal) ? kpiDeptRedux.dataModal : init
       }
       onSubmit={(values, { setSubmitting }) => {
-        console.log("=>values", values);
         dispatch(clearModalAssignDepartment());
         setTimeout(() => {
           setSubmitting(false);
         }, 400);
       }}
     >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-        /* and other goodies */
-      }) => (
+      {({ values, handleChange, handleSubmit }) => (
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Department
-          </Typography>
-          <SelectComponent
-            name="department"
-            option={mockDepartMent}
-            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
-            onChange={(selectedOption) => {
-              handleChange({
-                target: {
-                  name: "department",
-                  value: selectedOption,
-                },
-              });
-            }}
-          />
-          {console.log("=> value", values)}
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Area
-          </Typography>
-          <SelectComponent
-            name="area"
-            option={mockArea}
-            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
-            onChange={(selectedOption) => {
-              handleChange({
-                target: {
-                  name: "area",
-                  value: selectedOption,
-                },
-              });
-            }}
-          />
+          <FieldArray name="items">
+            {({ push, remove }) => (
+              <>
+                {values.items.map((itemAssign, index) => {
+                  return (
+                    <div
+                      className="flex flex-col gap-5"
+                      key={`item-${index} overflow-auto`}
+                    >
+                      {values.items.length > 1 && (
+                        <div className="flex flex-row justify-between ">
+                          <TextComponent variant="h6" color="blue-gray">
+                            # {index + 1}
+                          </TextComponent>
+                          {index !== 0 && (
+                            <TextComponent
+                              variant="paragraph"
+                              className="text- cursor-pointer"
+                              onClick={() => remove(index)}
+                            >
+                              Remove
+                            </TextComponent>
+                          )}
+                        </div>
+                      )}
 
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Category
-          </Typography>
-          <SelectMultiComponent
-            name="category"
-            option={mockCategory}
-            closeMenuOnSelect={EBool.false}
-            value={values.categories}
-            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
-            onChange={(selectedOption) => {
-              handleChange({
-                target: {
-                  name: "category",
-                  value: selectedOption,
-                },
-              });
-            }}
-          />
+                      <TextComponent
+                        variant="h6"
+                        color="blue-gray"
+                        className="-mb-3"
+                      >
+                        Department
+                      </TextComponent>
+                      <SelectComponent
+                        name={`${index}.department`}
+                        placeholder="Department"
+                        option={mockDepartMent}
+                        isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
+                        onChange={(selectedOption) => {
+                          handleChange({
+                            target: {
+                              name: `${index}.department`,
+                              value: selectedOption,
+                            },
+                          });
+                        }}
+                      />
+                      <TextComponent
+                        variant="h6"
+                        color="blue-gray"
+                        className="-mb-3"
+                      >
+                        Area
+                      </TextComponent>
+                      <SelectComponent
+                        name="area"
+                        option={mockArea}
+                        isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
+                        onChange={(selectedOption) => {
+                          handleChange({
+                            target: {
+                              name: "area",
+                              value: selectedOption,
+                            },
+                          });
+                        }}
+                      />
+                      <TextComponent
+                        variant="h6"
+                        color="blue-gray"
+                        className="-mb-3"
+                      >
+                        Category
+                      </TextComponent>
+                      <SelectMultiComponent
+                        name="category"
+                        option={mockCategory}
+                        closeMenuOnSelect={EBool.false}
+                        value={values.categories}
+                        isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
+                        onChange={(selectedOption) => {
+                          handleChange({
+                            target: {
+                              name: "category",
+                              value: selectedOption,
+                            },
+                          });
+                        }}
+                      />
+                      <TextComponent
+                        variant="h6"
+                        color="blue-gray"
+                        className="-mb-3"
+                      >
+                        KPIs
+                      </TextComponent>
 
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            KPIs
-          </Typography>
+                      <SelectMultiComponent
+                        name="kpis"
+                        option={mockKPI}
+                        closeMenuOnSelect={EBool.false}
+                        isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
+                        value={values.kpis}
+                        onChange={(selectedOption) => {
+                          handleChange({
+                            target: {
+                              name: "kpis",
+                              value: selectedOption,
+                            },
+                          });
+                        }}
+                      />
+                      {console.log(
+                        "=> values.items.length",
+                        values.items.length
+                      )}
+                      {values.items.length > 1 && <Divider />}
+                    </div>
+                  );
+                })}
+                {kpiDeptRedux.openModal.mode !== EMode.view && (
+                  <div className="flex flex-row items-center justify-center gap-2 mt-2 ">
+                    <ButtonComponent
+                      variant="outlined"
+                      className="w-[20%] bg-white "
+                      onClick={() => push(init)}
+                    >
+                      Add
+                    </ButtonComponent>
 
-          <SelectMultiComponent
-            name="kpis"
-            option={mockKPI}
-            closeMenuOnSelect={EBool.false}
-            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
-            value={values.kpis}
-            onChange={(selectedOption) => {
-              handleChange({
-                target: {
-                  name: "kpis",
-                  value: selectedOption,
-                },
-              });
-            }}
-          />
+                    <ButtonComponent
+                      type="submit"
+                      className="w-[20%] bg-localGreen"
+                    >
+                      Save Draft
+                    </ButtonComponent>
 
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Status
-          </Typography>
-          <SelectComponent
-            name="status"
-            option={mockStatus}
-            isDisabled={kpiDeptRedux.openModal.mode === EMode.view}
-            onChange={(selectedOption) => {
-              handleChange({
-                target: {
-                  name: "status",
-                  value: selectedOption,
-                },
-              });
-            }}
-          />
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Deadline
-          </Typography>
-          {console.log("=> value", values)}
-
-          <div
-            className={
-              kpiDeptRedux.openModal.mode !== EMode.view
-                ? ""
-                : "pointer-events-none opacity-50"
-            }
-          >
-            <DateRangePicker
-              name="selectionRange"
-              staticRanges={[]}
-              inputRanges={[]}
-              ranges={[values.selectionRange]}
-              onChange={(e) => {
-                handleChange({
-                  target: {
-                    name: "selectionRange",
-                    value: e.selection,
-                  },
-                });
-              }}
-            />
-          </div>
-
-          {kpiDeptRedux.openModal.mode !== EMode.view && (
-            <div className="flex flex-row items-center justify-center gap-2">
-              {kpiDeptRedux.openModal.mode !== EMode.edit && (
-                <ButtonComponent
-                  type="submit"
-                  variant="outlined"
-                  className="w-[20%]"
-                >
-                  Save Draft
-                </ButtonComponent>
-              )}
-
-              <ButtonComponent type="submit" className="w-[20%]">
-                {kpiDeptRedux.openModal.mode === EMode.add ? "Submit" : "Edit"}
-              </ButtonComponent>
-            </div>
-          )}
+                    <ButtonComponent type="submit" className="w-[20%]">
+                      {kpiDeptRedux.openModal.mode === EMode.add
+                        ? "Submit"
+                        : "Edit"}
+                    </ButtonComponent>
+                  </div>
+                )}
+              </>
+            )}
+          </FieldArray>
         </form>
       )}
     </Formik>

@@ -11,3 +11,4 @@ export { default as ViewIcon } from "./ViewIcon";
 export { default as EditIcon } from "./EditIcon";
 export { default as DeleteIcon } from "./DeleteIcon";
 export { default as NotViewIcon } from "./NotViewIcon";
+export { default as MinusIcon } from "./MinusIcon";

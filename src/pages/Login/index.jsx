@@ -25,9 +25,7 @@ const LoginPage = () => {
       <Formik
         initialValues={{ username: "", password: "", remember: "" }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log("=> values", values);
           if (["admin", "employee"].includes(values.username)) {
-            console.log("=> username");
             if (values.username === "employee") {
               dispatch(setPermission(["emp"]));
               localStorage.setItem("permission", ["employee", "admin"]);

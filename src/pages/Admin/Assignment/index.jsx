@@ -56,7 +56,6 @@ const AssignmentPage = () => {
       dishpatch(setAssignmentDeleteModal(EBool.true));
     }
   };
-  console.log("=> assignRedux", assignRedux);
 
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">

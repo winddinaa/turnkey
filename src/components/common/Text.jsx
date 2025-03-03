@@ -14,6 +14,9 @@ const TextComponent = ({ className, children, variant, ...rest }) => {
   );
 };
 
-Text.propTypes = { className: PropTypes.string, variant: PropTypes.string };
+TextComponent.propTypes = {
+  className: PropTypes.string,
+  variant: PropTypes.string,
+};
 
 export default TextComponent;

@@ -1,19 +1,19 @@
 import SearhBar_Performance from "../components/SearchBar_Performance";
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 const Track = () => {
   const [searchTerm, setSearchTerm] = useState("");
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const handleSearch = (e) => {
-  e.preventDefault(); // Prevent form from reloading the page
-  if (searchTerm.trim() !== "") {
-    navigate(`/performance?query=${searchTerm}`); // Redirect with query
-  } else {
-    navigate("/performance"); // Redirect without search query
-  }
-};
-const [isOpen, setIsOpen] = useState(false);
+  const handleSearch = (e) => {
+    e.preventDefault(); // Prevent form from reloading the page
+    if (searchTerm.trim() !== "") {
+      navigate(`/performance?query=${searchTerm}`); // Redirect with query
+    } else {
+      navigate("/performance"); // Redirect without search query
+    }
+  };
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleExport = (type) => {
     console.log(`Exporting as ${type}`); // Replace with export logic
@@ -32,25 +32,44 @@ const [isOpen, setIsOpen] = useState(false);
           </div>
 
           <div className="relative inline-block">
-          <button className="bg-[#3AA94F] flex items-center px-4 py-4 rounded-md text-white" onClick={() => setIsOpen(!isOpen)}>
-            Export File &nbsp;<i class="ri-arrow-down-s-line"></i>
-          </button>
-          {isOpen && (
-        <ul className="absolute mt-2 w-40 bg-white border rounded-md shadow-lg">
-          <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleExport("CSV")}>
-            Export as CSV
-          </li>
-          <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleExport("Excel")}>
-            Export as Excel
-          </li>
-        </ul>
-      )}
+            <button
+              className="bg-[#3AA94F] flex items-center px-4 py-4 rounded-md text-white"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              Export File &nbsp;<i class="ri-arrow-down-s-line"></i>
+            </button>
+            {isOpen && (
+              <ul className="absolute mt-2 w-40 bg-white border rounded-md shadow-lg">
+                <li
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleExport("CSV")}
+                >
+                  Export as CSV
+                </li>
+                <li
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleExport("Excel")}
+                >
+                  Export as Excel
+                </li>
+              </ul>
+            )}
           </div>
-          <input type="date" name="date" id="date" className="border-solid border border__color__input p-3 rounded"/>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            className="border-solid border border__color__input p-3 rounded"
+          />
           <p>to</p>
-          <input type="date" name="date" id="date" className="border-solid border border__color__input p-3 rounded"/>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            className="border-solid border border__color__input p-3 rounded"
+          />
           <button className="bg-[#5175E9] flex items-center px-4 py-4 rounded-md text-white">
-            Search  <i class="ri-search-line ms-2"></i>
+            Search <i class="ri-search-line ms-2"></i>
           </button>
         </div>
 
@@ -87,14 +106,22 @@ const [isOpen, setIsOpen] = useState(false);
           </div>
         </div>
         <form className="relative mt-10">
-        <div className="relative">
-            <input type="search" placeholder='Search KPIs' className="w-full p-4 rounded-md style__search pl-10 " value={searchTerm}  onChange={(e) => setSearchTerm(e.target.value)}/>
-            <button type="submit" className="bg-[#5175E9] flex items-center px-4 py-4 rounded-md text-white absolute right-0 top-1/2 transform -translate-y-1/2">
-           <i class="ri-search-line "></i>
-          </button>
-        
-        </div>
-    </form>
+          <div className="relative">
+            <input
+              type="search"
+              placeholder="Search KPIs"
+              className="w-full p-4 rounded-md style__search pl-10 "
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="bg-[#5175E9] flex items-center px-4 py-4 rounded-md text-white absolute right-0 top-1/2 transform -translate-y-1/2"
+            >
+              <i class="ri-search-line "></i>
+            </button>
+          </div>
+        </form>
         <div className="flex justify-start">
           <div className="notStart mt-5 p-4 rounded-lg">Not Started</div>
         </div>
