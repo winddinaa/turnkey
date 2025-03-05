@@ -56,6 +56,7 @@ const ModalAssign = () => {
                       className="flex flex-col gap-5"
                       key={`item-${index} overflow-auto`}
                     >
+                      {console.log("=> value", values)}
                       {values.items.length > 1 && (
                         <div className="flex flex-row justify-between ">
                           <TextComponent variant="h6" color="blue-gray">
@@ -65,7 +66,10 @@ const ModalAssign = () => {
                             <TextComponent
                               variant="paragraph"
                               className="text- cursor-pointer"
-                              onClick={() => remove(index)}
+                              onClick={() => {
+                                console.log("=> index", index);
+                                return remove(1);
+                              }}
                             >
                               Remove
                             </TextComponent>
@@ -159,10 +163,7 @@ const ModalAssign = () => {
                           });
                         }}
                       />
-                      {console.log(
-                        "=> values.items.length",
-                        values.items.length
-                      )}
+
                       {values.items.length > 1 && <Divider />}
                     </div>
                   );

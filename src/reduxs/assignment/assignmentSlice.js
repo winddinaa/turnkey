@@ -22,7 +22,7 @@ const assignmentSlice = createSlice({
     setAssignmentDeleteModal(state, action) {
       state.openModalDelete = action.payload;
     },
-    clearAssignment(state, action) {
+    clearAssignment(state) {
       state.dataModal = undefined;
       state.openModalDelete = false;
       state.openModal = {

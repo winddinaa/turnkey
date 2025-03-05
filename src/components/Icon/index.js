@@ -12,3 +12,6 @@ export { default as EditIcon } from "./EditIcon";
 export { default as DeleteIcon } from "./DeleteIcon";
 export { default as NotViewIcon } from "./NotViewIcon";
 export { default as MinusIcon } from "./MinusIcon";
+export { default as CloseIcon } from "./CloseIcon";
+export { default as AddEmpIcon } from "./AddEmpIcon";
+export { default as AddFileIcon } from "./AddFileIcon";

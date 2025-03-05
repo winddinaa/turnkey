@@ -1,6 +1,11 @@
 export const EPathPageAdmin = {
-  area: "AreaLevel",
-  assignMent: "admin-assignment",
+  department: "admin-kpis-department",
+  category: "admin-manage-category",
+  kpis: "admin-manage-kpis",
+  area: "admin-manage-area",
+  assignMent: "admin-manage-assignment",
+  dept: "admin-manage-department",
+  emp: "admin-manage-employee",
 };
 
 export const EBool = {

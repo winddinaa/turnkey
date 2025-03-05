@@ -7,6 +7,7 @@ import {
 import { Divider } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
+import { CloseIcon } from "../Icon";
 
 const ModalComponent = ({
   open = false,
@@ -18,7 +19,12 @@ const ModalComponent = ({
 }) => {
   return (
     <Dialog open={open} handler={handleClose}>
-      <DialogHeader className="text-textPrimary">{title}</DialogHeader>
+      <DialogHeader className="text-textPrimary justify-between">
+        {title}
+        <div className="cursor-pointer" onClick={handleClose}>
+          <CloseIcon />
+        </div>
+      </DialogHeader>
       <Divider />
       <DialogBody className="min-h-[50vh] max-h-[80vh]  gap-5 overflow-y-auto">
         {children}
@@ -33,7 +39,7 @@ const ModalComponent = ({
 ModalComponent.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.any,
 };
 
 export default ModalComponent;

@@ -25,11 +25,27 @@ import KPIEmployeePage from "./pages/Admin/KPIEmployee";
 import KPIHistoryPage from "./pages/Admin/KPIHistory";
 import LoginPage from "./pages/Login";
 import AssignmentPage from "./pages/Admin/Assignment";
+import CategoryPage from "./pages/Admin/Category";
+import KPIsPage from "./pages/Admin/KPIs";
+import DepartmentPage from "./pages/Admin/Department";
+import EmployeePage from "./pages/Admin/Employee";
+
 function App() {
   const adminRoute = () => {
     return (
       <>
-        <Route path="/admin-kpis-department" element={<KPIDepartmentPage />} />
+        <Route path={`/${EPathPageAdmin.area}`} element={<AreaPage />} />
+        <Route
+          path={`/${EPathPageAdmin.category}`}
+          element={<CategoryPage />}
+        />
+        <Route
+          path={`${EPathPageAdmin.department}`}
+          element={<KPIDepartmentPage />}
+        />
+        <Route path={`${EPathPageAdmin.emp}`} element={<EmployeePage />} />
+        <Route path="/admin-manage-department" element={<DepartmentPage />} />
+        <Route path={`${EPathPageAdmin.kpis}`} element={<KPIsPage />} />
         <Route path="/admin-kpis-employee" element={<KPIEmployeePage />} />
         <Route path="/admin-kpis-history" element={<KPIHistoryPage />} />
         <Route
@@ -47,7 +63,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Management" element={<Management />} />
-          <Route path={`/${EPathPageAdmin.area}`} element={<AreaPage />} />
+
           <Route path="/Employee" element={<Employee />} />
           <Route path="/Employee/2" element={<Employee_2 />} />
           <Route path="/KPILevel" element={<KPILevel />} />

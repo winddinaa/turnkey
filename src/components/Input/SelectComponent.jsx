@@ -25,7 +25,7 @@ const SelectComponent = ({
               "border rounded-md  transition-all",
               "border-gray-300 bg-white shadow-sm",
               isFocused && "!border-primary ring-2 ring-primary ",
-              isDisabled && "bg-gray-100 cursor-not-allowed opacity-50",
+              isDisabled && "bg-inputDisabled cursor-not-allowed ",
               className
             );
           },

@@ -14,7 +14,7 @@ const ButtonComponent = ({
       type={type}
       variant={variant}
       onClick={onClick}
-      className={`w-[100%]  min-w-[180px]  bg-primary p-2 ${className}`}
+      className={`w-[100%]  min-w-[180px]  bg-primary p-2 justify-items-center ${className}`}
     >
       {children}
     </Button>

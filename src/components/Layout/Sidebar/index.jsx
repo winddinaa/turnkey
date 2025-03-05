@@ -16,10 +16,10 @@ export default function Sidebar() {
   const authRedux = useSelector((state) => state.auth);
   return (
     <nav className="min-h-screen flex flex-col bg-white border-r shadow-sm">
-      <div className="p-4 pe-8 pb-2 flex justify-between items-center h-[7vh]">
+      <div className="p-4 pe-8 pb-2 flex justify-between items-center h-[7vh] mb-5">
         <LogoIcon />
       </div>
-      {authRedux.permission.includes(ERoles.admin) ? (
+      {!authRedux.permission.includes(ERoles.admin) ? (
         <SidebarAdmin />
       ) : (
         <SidebarEmployee />

@@ -17,7 +17,7 @@ const Header = () => {
      w-[100%] justify-between items-center"
       >
         <div className="py-5 w-[50%]">
-          <InputComponent label="Search by Assignment" icon={<SearchIcon />} />
+          <InputComponent label="Search Assignment" icon={<SearchIcon />} />
         </div>
         <div>
           <ButtonComponent
@@ -33,7 +33,7 @@ const Header = () => {
           >
             <div
               className="flex items-center justify-center"
-              title="Add Assignment"
+              title="Create Assignment"
             >
               <PlusIcon />
             </div>

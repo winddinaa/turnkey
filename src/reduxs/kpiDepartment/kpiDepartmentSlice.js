@@ -5,6 +5,8 @@ const initialState = {
   isDraft: false,
   openModalDelete: false,
   dataModal: [],
+  focusAssignmentData: undefined,
+  selectKPIs: [],
 };
 
 const dateFrom = new Date();
@@ -24,7 +26,7 @@ const kpiDepartmentSlice = createSlice({
         ...action.payload,
       };
     },
-    clearModalAssignDepartment(state, action) {
+    clearModalAssignDepartment(state) {
       state.openModal = { mode: "", open: false };
       state.dataModal = [];
     },
@@ -33,6 +35,13 @@ const kpiDepartmentSlice = createSlice({
     },
     setModalDeleteAssignDepartment(state, action) {
       state.openModalDelete = action.payload;
+    },
+    setFucusAssignment(state, action) {
+      state.focusAssignmentData = action.payload;
+    },
+    setSelectKPIs(state, action) {
+      console.log("=> state", state.selectKPIs);
+      state.selectKPIs = action.payload;
     },
   },
 });
@@ -43,5 +52,8 @@ export const {
   clearModalAssignDepartment,
   setModalDeleteAssignDepartment,
   setAssignDepartmentDraft,
+  setFucusAssignment,
+  setSelectKPIs,
 } = kpiDepartmentSlice.actions;
+
 export default kpiDepartmentSlice.reducer;

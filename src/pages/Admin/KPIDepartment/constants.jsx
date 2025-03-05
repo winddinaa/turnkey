@@ -11,20 +11,10 @@ export const init = {
 export const EColumnsKPIDepartment = (onView, onEdit, onDelete) => [
   { field: "id", headerName: "No." },
   { field: "department", headerName: "Department Name", flex: 1 },
-  { field: "kpis", headerName: "KPIs", flex: 1 },
-  { field: "categories", headerName: "Category Name", flex: 1 },
   { field: "area", headerName: "Area Name", flex: 1 },
-  { field: "type", headerName: "Type", flex: 1 },
-  {
-    field: "status",
-    headerName: "Status",
-    renderCell: (params) => (
-      <div className="flex items-center  gap-2 ">
-        <DotIcon />
-        <p>{params.row.status}</p>
-      </div>
-    ),
-  },
+  { field: "categories", headerName: "Category Name", flex: 1 },
+  { field: "kpis", headerName: "KPIs", flex: 1 },
+  { field: "employee", headerName: "Employee", flex: 1 },
   {
     field: "action",
     headerName: "Action",
@@ -97,6 +87,6 @@ export const rows = Array.from({ length: 50 }, (_, i) => ({
   kpis: `KPIs ${i + 1}`,
   categories: `Category ${i + 1}`,
   area: `Area ${i + 1}`,
-  type: `Type ${i + 1}`,
+  employee: `${i + 1}`,
   status: "active",
 }));

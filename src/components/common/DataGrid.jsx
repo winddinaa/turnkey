@@ -14,6 +14,8 @@ const DataGridComponent = ({
   ],
   checkboxSelection = false,
   getRowId,
+  disableRowSelectionOnClick = false,
+  ...rest
 }) => {
   return (
     <div className="h-[80%] w-[100%] overflow-x-auto">
@@ -22,6 +24,8 @@ const DataGridComponent = ({
         columns={columns}
         checkboxSelection={checkboxSelection}
         getRowId={getRowId}
+        disableRowSelectionOnClick={disableRowSelectionOnClick}
+        {...rest}
       />
     </div>
   );
@@ -31,6 +35,7 @@ DataGridComponent.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.any).isRequired,
   rows: PropTypes.arrayOf(PropTypes.any).isRequired,
   checkboxSelection: PropTypes.bool,
+  disableSelectionOnClick: PropTypes.bool,
 };
 
 export default DataGridComponent;
