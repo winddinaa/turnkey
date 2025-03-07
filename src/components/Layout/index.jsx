@@ -10,7 +10,6 @@ const LayOut = ({ children }) => {
   if (location.pathname.toLocaleLowerCase() === "/login") {
     return <>{children}</>;
   }
-
   return (
     <div className="flex h-full w-full">
       <div
@@ -20,7 +19,11 @@ const LayOut = ({ children }) => {
       >
         <Sidebar />
       </div>
-      <div className="w-full max-w-[85vw] overflow-x-auto overflow-y-hidden ">
+      <div
+        className={`w-full max-w-[${
+          sidebarRedux.drawer ? "85vw" : "100vw"
+        }] overflow-x-auto overflow-y-hidden `}
+      >
         <Navbar />
         {children}
       </div>

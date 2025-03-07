@@ -11,19 +11,18 @@ export const sideMenu = [
       { title: "Area", href: EPathPageAdmin.area },
       { title: "Category", href: EPathPageAdmin.category },
       { title: "KPIs", href: EPathPageAdmin.kpis },
+      { title: "Assignment", href: EPathPageAdmin.assignMent },
       { title: "Department", href: EPathPageAdmin.dept },
       { title: "Employee", href: EPathPageAdmin.emp },
-      { title: "Assignment", href: EPathPageAdmin.assignMent },
     ],
   },
   {
-    title: "Assign KPIs",
+    title: "KPIs",
     keyOpen: 3,
     icon: PieIcon,
     submenu: [
-      { title: "KPIs Department", href: "admin-kpis-department" },
-      { title: "KPIs Employee", href: "admin-kpis-employee" },
-      { title: "KPIs History", href: "admin-kpis-history" },
+      { title: "Assign KPIs", href: EPathPageAdmin.assignKPIs },
+      { title: "KPIs report", href: EPathPageAdmin.assignKPIsReport },
     ],
   },
   {

@@ -19,7 +19,12 @@ const Header = () => {
         <div className="py-5 w-[50%]">
           <InputComponent label="Search Department" icon={<SearchIcon />} />
         </div>
-        <div>
+        <div className="flex flex-row gap-5">
+          <ButtonComponent className="bg-buttonImport" onClick={() => {}}>
+            <TextComponent variant="h6" className="text-localWhite">
+              Import
+            </TextComponent>
+          </ButtonComponent>
           <ButtonComponent
             className="bg-primary"
             onClick={() => {
@@ -35,7 +40,12 @@ const Header = () => {
               className="flex items-center justify-center"
               title="Create Department"
             >
-              <PlusIcon />
+              <div className="flex items-center justify-center">
+                <PlusIcon />
+              </div>
+              <TextComponent variant="h6" className="text-localWhite">
+                Department
+              </TextComponent>
             </div>
           </ButtonComponent>
         </div>

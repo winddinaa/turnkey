@@ -15,10 +15,12 @@ const ModalComponent = ({
     console.log("click");
   },
   title = "Title",
+  size = "md",
   children,
+  ...rest
 }) => {
   return (
-    <Dialog open={open} handler={handleClose}>
+    <Dialog open={open} handler={handleClose} size={size} {...rest}>
       <DialogHeader className="text-textPrimary justify-between">
         {title}
         <div className="cursor-pointer" onClick={handleClose}>
@@ -40,6 +42,7 @@ ModalComponent.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   title: PropTypes.any,
+  size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl", "xxl"]),
 };
 
 export default ModalComponent;

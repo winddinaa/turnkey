@@ -21,8 +21,7 @@ import AreaPage from "./pages/Admin/Area";
 import LayOut from "./components/Layout";
 import WrapLayout from "./core/WrapLayout";
 import KPIDepartmentPage from "./pages/Admin/KPIDepartment";
-import KPIEmployeePage from "./pages/Admin/KPIEmployee";
-import KPIHistoryPage from "./pages/Admin/KPIHistory";
+import KPIsReport from "./pages/Admin/KPIsReport";
 import LoginPage from "./pages/Login";
 import AssignmentPage from "./pages/Admin/Assignment";
 import CategoryPage from "./pages/Admin/Category";
@@ -40,14 +39,16 @@ function App() {
           element={<CategoryPage />}
         />
         <Route
-          path={`${EPathPageAdmin.department}`}
+          path={`${EPathPageAdmin.assignKPIs}`}
           element={<KPIDepartmentPage />}
         />
         <Route path={`${EPathPageAdmin.emp}`} element={<EmployeePage />} />
         <Route path="/admin-manage-department" element={<DepartmentPage />} />
         <Route path={`${EPathPageAdmin.kpis}`} element={<KPIsPage />} />
-        <Route path="/admin-kpis-employee" element={<KPIEmployeePage />} />
-        <Route path="/admin-kpis-history" element={<KPIHistoryPage />} />
+        <Route
+          path={`${EPathPageAdmin.assignKPIsReport}`}
+          element={<KPIsReport />}
+        />
         <Route
           path={`/${EPathPageAdmin.assignMent}`}
           element={<AssignmentPage />}

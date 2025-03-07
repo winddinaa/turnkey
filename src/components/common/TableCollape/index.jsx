@@ -3,18 +3,17 @@ import TextComponent from "../Text";
 import { Divider } from "@mui/material";
 import PropTypes from "prop-types";
 import { MinusIcon, PlusIcon } from "../../Icon";
-import { theme } from "../../../core/theme/theme";
 import { CardBody, Collapse } from "@material-tailwind/react";
+import { Etype } from "../../../constants/enum";
+import { colors } from "../../../core/theme/theme";
 
 const TableCollape = ({
   isCollaps = false,
   columns = [],
   rows = [],
   getCollapsOpenIndex,
-  ...rest
 }) => {
   const [open, setOpen] = React.useState(0);
-
   const handleCollape = (e, values) => {
     if (e + 1 === open) {
       getCollapsOpenIndex(values);
@@ -27,7 +26,7 @@ const TableCollape = ({
 
   return (
     <div className="flex flex-col  h-full w-full overflow-x-auto">
-      <div className="flex flex-row sticky top-0 z-10 bg-localWhite">
+      <div className="flex flex-row sticky top-0 z-30 bg-localWhite">
         {isCollaps && <div className={`w-[50px] px-2`}></div>}
         {columns.map((item, index) => {
           return (
@@ -51,69 +50,50 @@ const TableCollape = ({
                   handleCollape(index, itemRows);
                 }}
               >
-                {isCollaps && (
-                  <div className={`w-[50px] p-2`}>
-                    {open === index + 1 ? (
-                      <MinusIcon />
-                    ) : (
-                      <PlusIcon fill={theme.extend.colors.localBlack} />
-                    )}
-                  </div>
-                )}
+                <div className={`w-[50px] p-2`}>
+                  {open === index + 1 ? (
+                    <MinusIcon />
+                  ) : (
+                    <PlusIcon fill={colors.localBlack} />
+                  )}
+                </div>
+
                 {Object.keys(itemRows)
                   .filter((itemfill) => itemfill !== "expandCollape")
                   .map((keyRow, indexRow) => {
-                    if (
-                      itemRows[keyRow] &&
-                      typeof itemRows[keyRow] === "function"
-                    ) {
-                      return (
-                        <div
-                          className={`flex-1 p-2`}
-                          key={`colaps-row-in-${indexRow.toString()} `}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                          }}
-                        >
-                          {itemRows[keyRow](itemRows)}
-                        </div>
-                      );
-                    }
-                    if (
-                      itemRows[keyRow] &&
-                      React.isValidElement(itemRows[keyRow]) &&
-                      itemRows[keyRow].props &&
-                      itemRows[keyRow].props.onClick
-                    ) {
-                      return (
-                        <div
-                          className={`flex-1 p-2`}
-                          key={`colaps-row-in-${indexRow.toString()} `}
-                        >
-                          {React.cloneElement(itemRows[keyRow], {
-                            ...itemRows[keyRow].props, // ก๊อปปี้ props ที่มีอยู่แล้ว
-                            rowData: itemRows, // เพิ่ม prop ใหม่ที่ต้องการ
-                            onClick: (e) => {
+                    switch (typeof itemRows[keyRow]) {
+                      case Etype.func:
+                        return (
+                          <div
+                            className={`flex-1 p-2`}
+                            key={`colaps-row-in-${indexRow.toString()} `}
+                            onClick={(e) => {
                               e.stopPropagation();
-                            },
-                          })}
-                        </div>
-                      );
+                            }}
+                          >
+                            {itemRows[keyRow](itemRows)}
+                          </div>
+                        );
+                      case Etype.string:
+                        return (
+                          <div
+                            className={`flex-1 p-2`}
+                            key={`colaps-row-in-${indexRow.toString()} `}
+                          >
+                            <TextComponent variant="paragraph">
+                              {itemRows[keyRow]}
+                            </TextComponent>
+                          </div>
+                        );
+                      default:
+                        <div
+                          className={`flex-1 p-2`}
+                          key={`colaps-row-in-${indexRow.toString()} `}
+                        >
+                          {itemRows[keyRow]}
+                        </div>;
+                        break;
                     }
-                    return (
-                      <div
-                        className={`flex-1 p-2`}
-                        key={`colaps-row-in-${indexRow.toString()} `}
-                      >
-                        {typeof itemRows[keyRow] === "string" ? (
-                          <TextComponent variant="paragraph">
-                            {itemRows[keyRow]}
-                          </TextComponent>
-                        ) : (
-                          itemRows[keyRow]
-                        )}
-                      </div>
-                    );
                   })}
               </div>
               <Collapse open={open === index + 1}>

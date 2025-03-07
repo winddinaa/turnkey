@@ -23,7 +23,7 @@ const ModalAssignment = () => {
           assignRedux.dataModal ? assignRedux.dataModal : { data: [] }
         }
         onSubmit={(values, { setSubmitting }) => {
-          dispatch(clearModalAssignDepartment());
+          dispatch(clearAssignDepartment());
           setTimeout(() => {
             setSubmitting(false);
           }, 400);

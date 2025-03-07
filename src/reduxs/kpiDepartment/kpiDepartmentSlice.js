@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  openModal: { mode: "", open: false },
   isDraft: false,
   openModalDelete: false,
-  dataModal: [],
   focusAssignmentData: undefined,
+  dataModal: [],
   selectKPIs: [],
+  modalAssignEmployees: { mode: "", open: false },
+  modalEmployeeInKPIs: false,
+  openModal: { mode: "", open: false },
+  dataEmpInKPIs: undefined,
+  empSelectforDelete: [],
 };
 
 const dateFrom = new Date();
@@ -26,9 +30,11 @@ const kpiDepartmentSlice = createSlice({
         ...action.payload,
       };
     },
-    clearModalAssignDepartment(state) {
+    clearAssignDepartment(state) {
       state.openModal = { mode: "", open: false };
       state.dataModal = [];
+      state.modalAssignEmployees = { mode: "", open: false };
+      state.modalEmployeeInKPIs = false;
     },
     setAssignDepartmentDraft(state, action) {
       state.isDraft = action.payload;
@@ -36,12 +42,23 @@ const kpiDepartmentSlice = createSlice({
     setModalDeleteAssignDepartment(state, action) {
       state.openModalDelete = action.payload;
     },
-    setFucusAssignment(state, action) {
+    setModalEmployeeInKPIs(state, action) {
+      state.modalEmployeeInKPIs = action.payload;
+    },
+    setFocusAssignment(state, action) {
       state.focusAssignmentData = action.payload;
     },
     setSelectKPIs(state, action) {
-      console.log("=> state", state.selectKPIs);
       state.selectKPIs = action.payload;
+    },
+    setModalAssignKPIsEmployees(state, action) {
+      state.modalAssignEmployees = action.payload;
+    },
+    setDataEmpInKPIs(state, action) {
+      state.dataEmpInKPIs = action.payload;
+    },
+    setEmpForDelete(state, action) {
+      state.empSelectforDelete = action.payload;
     },
   },
 });
@@ -49,11 +66,15 @@ const kpiDepartmentSlice = createSlice({
 export const {
   setModalAssignKpiDepartment,
   setDataModalAssignDepartment,
-  clearModalAssignDepartment,
   setModalDeleteAssignDepartment,
   setAssignDepartmentDraft,
-  setFucusAssignment,
+  setFocusAssignment,
   setSelectKPIs,
+  setModalAssignKPIsEmployees,
+  setModalEmployeeInKPIs,
+  setDataEmpInKPIs,
+  clearAssignDepartment,
+  setEmpForDelete,
 } = kpiDepartmentSlice.actions;
 
 export default kpiDepartmentSlice.reducer;

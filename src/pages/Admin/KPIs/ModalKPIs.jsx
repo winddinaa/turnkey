@@ -41,9 +41,27 @@ const ModalKPIs = () => {
         {({ values, handleChange, handleSubmit }) => (
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             <TextComponent variant="h6" color="blue-gray" className="-mb-3">
+              Area Name
+            </TextComponent>
+            <SelectComponent
+              name="area_name"
+              isDisabled={isDisabled}
+              value={mockCategory.find(
+                (option) => option.value === values.category_name
+              )}
+              option={mockCategory}
+              onChange={(e) => {
+                handleChange({
+                  target: {
+                    name: "area_name",
+                    value: e,
+                  },
+                });
+              }}
+            />
+            <TextComponent variant="h6" color="blue-gray" className="-mb-3">
               Category Name
             </TextComponent>
-            {console.log("=>values", values)}
             <SelectComponent
               name="category_name"
               isDisabled={isDisabled}

@@ -19,7 +19,22 @@ const Header = () => {
         <div className="py-5 w-[50%]">
           <InputComponent label="Search Area" icon={<SearchIcon />} />
         </div>
-        <div>
+        <div className="flex flex-row gap-5">
+          <ButtonComponent
+            className="bg-buttonImport"
+            onClick={() => {
+              dispatch(
+                setAreaModal({
+                  mode: EMode.add,
+                  open: EBool.true,
+                })
+              );
+            }}
+          >
+            <TextComponent variant="h6" className="text-localWhite">
+              Import
+            </TextComponent>
+          </ButtonComponent>
           <ButtonComponent
             className="bg-primary"
             onClick={() => {
@@ -35,7 +50,12 @@ const Header = () => {
               className="flex items-center justify-center"
               title="Create Area"
             >
-              <PlusIcon />
+              <div className="flex items-center justify-center">
+                <PlusIcon />
+              </div>
+              <TextComponent variant="h6" className="text-localWhite">
+                Area
+              </TextComponent>
             </div>
           </ButtonComponent>
         </div>

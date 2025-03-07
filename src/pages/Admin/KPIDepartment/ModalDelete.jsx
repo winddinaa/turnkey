@@ -9,7 +9,7 @@ const ModalDelete = () => {
   return (
     <div className="flex flex-col justify-center items-center text-center min-h-[40vh] ">
       <div className="py-10">
-        <Typography variant="p">
+        <Typography variant="paragraph">
           Are you sure you want to delete KPIs Department? this action cannot be
           undone.
         </Typography>

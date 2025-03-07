@@ -12,7 +12,7 @@ const Header = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
   return (
     <div className="w-[100%]">
-      <TextComponent variant="h3">Assign KPIs Department</TextComponent>
+      <TextComponent variant="h3">Assign KPIs</TextComponent>
       <div
         className="flex 
      w-[100%] justify-between items-center mb-5"

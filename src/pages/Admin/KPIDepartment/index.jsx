@@ -4,8 +4,11 @@ import Header from "./Header";
 import DataGridComponent from "../../../components/common/DataGrid";
 import {
   EColumnsKPIDepartment,
+  headerAssignment,
+  headerDraft,
   mockArea,
   mockCategory,
+  mockDraftDepartment,
   mockKPI,
   rows,
 } from "./constants";
@@ -15,57 +18,42 @@ import {
   setModalAssignKpiDepartment,
   setDataModalAssignDepartment,
   setModalDeleteAssignDepartment,
-  setFucusAssignment,
+  setFocusAssignment,
   setSelectKPIs,
+  setModalAssignKPIsEmployees,
+  clearAssignDepartment,
+  setModalEmployeeInKPIs,
+  setDataEmpInKPIs,
 } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
-import { EBool, EMode, ESelectType } from "../../../constants/enum";
+import { EBool, EMode } from "../../../constants/enum";
 import ModalAssign from "./ModalAssign";
 import ModalDelete from "./ModalDelete";
-import { convertStringToArray, filterValueSelect } from "../../../utils/helper";
 import TableCollape from "../../../components/common/TableCollape";
 import ButtonComponent from "../../../components/common/Button";
 import { AddEmpIcon, AddFileIcon } from "../../../components/Icon";
 import ModalAddEmployee from "./ModalAddEmployee";
+import ModalEmployeeInKPIs from "./ModalEmployeeInKPIs";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
-  console.log("=> kpiDeptRedux", kpiDeptRedux);
   const dispatch = useDispatch();
   const onView = () => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.view, open: EBool.true })
     );
-    let bodyShow = {
-      ...e,
-      kpis: filterValueSelect(
-        convertStringToArray(e.kpis),
-        mockKPI,
-        ESelectType.multi
-      ),
-      categories: filterValueSelect(
-        convertStringToArray(e.categories),
-        mockCategory,
-        ESelectType.multi
-      ),
-      area: filterValueSelect(e.area, mockArea, ESelectType.single),
-    };
-    dispatch(setDataModalAssignDepartment(bodyShow));
   };
 
   const onEdit = (e) => {
     dispatch(
       setModalAssignKpiDepartment({ mode: EMode.edit, open: EBool.true })
     );
+    console.log("=> e", e);
+    dispatch(setDataModalAssignDepartment());
+  };
 
-    let bodyShow = {
-      ...e,
-      kpis: filterValueSelect(
-        convertStringToArray(e.kpis),
-        mockKPI,
-        ESelectType.multi
-      ),
-    };
-    dispatch(setDataModalAssignDepartment(bodyShow));
+  const onOpenEmp = (e) => {
+    dispatch(setModalEmployeeInKPIs(true));
+    dispatch(setDataEmpInKPIs(e));
   };
 
   const onDelete = () => {
@@ -73,14 +61,12 @@ const KPIDepartmentPage = () => {
   };
 
   const handleSelectKPIs = (newSelection) => {
-    console.log("=> newSelection", newSelection);
     dispatch(setSelectKPIs(newSelection));
   };
   const handleCollape = (assignment) => {
-    console.log("=>assignment", assignment);
     delete assignment.expandCollape;
     delete assignment.action;
-    dispatch(setFucusAssignment(assignment));
+    dispatch(setFocusAssignment(assignment));
   };
   return (
     <Container className="flex flex-col bg-localWhite h-[95vh] w-[100%] max-w-[100%] ">
@@ -88,53 +74,23 @@ const KPIDepartmentPage = () => {
       <TableCollape
         isCollaps
         getCollapsOpenIndex={handleCollape}
-        columns={
-          kpiDeptRedux.isDraft
-            ? [
-                "Assign ID",
-                "Start  Evaluation Date",
-                "End  Evaluation Date",
-                "Type",
-                "Status",
-              ]
-            : [
-                "Assign ID",
-                "Start  Evaluation Date",
-                "End  Evaluation Date",
-                "Type",
-                "Status",
-                "KPIs Department",
-              ]
-        }
+        columns={kpiDeptRedux.isDraft ? headerDraft : headerAssignment}
         rows={
           kpiDeptRedux.isDraft
-            ? Array.from({ length: 9 }, (_, i) => ({
-                assign: `as-00${i + 1}`,
-                start: `2025-08-01`,
-                end: `2025-12-31`,
-                type: `type ${i + 1}`,
-                rows: { rows },
-                status: `active`,
-                expandCollape: (
-                  <div className="w-full h-[60vh]">
-                    <DataGridComponent
-                      rows={rows}
-                      columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
-                    />
-                  </div>
-                ),
-              }))
+            ? mockDraftDepartment(onView, onEdit, onDelete)
             : Array.from({ length: 9 }, (_, i) => ({
-                assign: `as-00${i + 1}`,
+                assignId: `as-00${i + 1}`,
                 start: `2025-08-01`,
                 end: `2025-12-31`,
                 type: `type ${i + 1}`,
                 status: `active`,
+                rows: rows,
                 action: (e) => {
                   return (
                     <div className="flex flex-row gap-2">
                       <ButtonComponent
                         className="w-[20px]  min-w-[40px]"
+                        title="Assign KPIs"
                         onClick={(e) => {
                           dispatch(
                             setModalAssignKpiDepartment({
@@ -146,9 +102,24 @@ const KPIDepartmentPage = () => {
                       >
                         <AddFileIcon />
                       </ButtonComponent>
-                      <ButtonComponent className="w-[20px] min-w-[40px]">
-                        <AddEmpIcon />
-                      </ButtonComponent>
+                      {kpiDeptRedux.focusAssignmentData?.assignId ===
+                        e.assignId &&
+                        kpiDeptRedux.selectKPIs.length > 0 && (
+                          <ButtonComponent
+                            className="w-[20px] min-w-[40px]"
+                            title="Assign Employee"
+                            onClick={(e) => {
+                              dispatch(
+                                setModalAssignKPIsEmployees({
+                                  mode: EMode.add,
+                                  open: EBool.true,
+                                })
+                              );
+                            }}
+                          >
+                            <AddEmpIcon />
+                          </ButtonComponent>
+                        )}
                     </div>
                   );
                 },
@@ -158,27 +129,43 @@ const KPIDepartmentPage = () => {
                       checkboxSelection
                       rows={rows}
                       onRowSelectionModelChange={handleSelectKPIs}
-                      columns={EColumnsKPIDepartment(onView, onEdit, onDelete)}
+                      columns={EColumnsKPIDepartment(
+                        onView,
+                        onEdit,
+                        onDelete,
+                        onOpenEmp
+                      )}
                     />
                   </div>
                 ),
               }))
         }
       />
+      <ModalComponent
+        open={kpiDeptRedux.modalEmployeeInKPIs}
+        title={`Assignment ID: ${kpiDeptRedux.focusAssignmentData?.assignId}`}
+        size={"lg"}
+        handleClose={() => {
+          dispatch(clearAssignDepartment());
+        }}
+      >
+        <ModalEmployeeInKPIs />
+      </ModalComponent>
 
       <ModalComponent
-        open={kpiDeptRedux.openModal.open}
-        title={`${kpiDeptRedux.openModal.mode} KPIs Department`}
-        handleClose={() =>
-          dispatch(setModalAssignKpiDepartment({ mode: "", open: EBool.false }))
-        }
+        open={kpiDeptRedux.modalAssignEmployees.open}
+        title={` Assign KPIs employee`}
+        size={"lg"}
+        handleClose={() => {
+          dispatch(clearAssignDepartment());
+        }}
       >
         <ModalAddEmployee />
       </ModalComponent>
 
       <ModalComponent
         open={kpiDeptRedux.openModal.open}
-        title={`${kpiDeptRedux.openModal.mode} KPIs Department`}
+        title={`Assign KPIs`}
         handleClose={() =>
           dispatch(setModalAssignKpiDepartment({ mode: "", open: EBool.false }))
         }

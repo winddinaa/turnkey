@@ -15,3 +15,4 @@ export { default as MinusIcon } from "./MinusIcon";
 export { default as CloseIcon } from "./CloseIcon";
 export { default as AddEmpIcon } from "./AddEmpIcon";
 export { default as AddFileIcon } from "./AddFileIcon";
+export { default as PersonalIcon } from "./PersonalIcon";

@@ -1,5 +1,6 @@
 export const EPathPageAdmin = {
-  department: "admin-kpis-department",
+  assignKPIs: "admin-kpis-assign",
+  assignKPIsReport: "admin-kpis-report",
   category: "admin-manage-category",
   kpis: "admin-manage-kpis",
   area: "admin-manage-area",
@@ -31,4 +32,9 @@ export const ERoles = {
 
 export const EFormateDate = {
   date: "YYYY-MM-DD",
+};
+
+export const Etype = {
+  func: "function",
+  string: "string",
 };
