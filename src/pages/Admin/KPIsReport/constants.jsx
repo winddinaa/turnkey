@@ -84,11 +84,13 @@ export const data = (onEmployee) => [
     label: "Department2(20)",
     value: "department2",
     desc: (
-      <DataGridComponent
-        getRowId={(row) => row.kpis_id}
-        columns={EColumnsReport(onEmployee)}
-        rows={rows}
-      />
+      <div className="w-full h-[80vh]">
+        <DataGridComponent
+          getRowId={(row) => row.kpis_id}
+          columns={EColumnsReport(onEmployee)}
+          rows={rows}
+        />
+      </div>
     ),
   },
 ];

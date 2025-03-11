@@ -29,7 +29,8 @@ const SelectComponent = ({
               className
             );
           },
-          menu: () => "bg-white shadow-lg border border-gray-200 rounded-md",
+          menu: () =>
+            "bg-white shadow-lg border border-gray-200 !z-10 rounded-md",
           option: ({ isFocused, isSelected }) =>
             twMerge(
               "cursor-pointer px-4 py-2 text-gray-700",
