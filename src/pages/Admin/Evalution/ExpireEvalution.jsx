@@ -1,17 +1,18 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { mockActiveEvaluation } from "./constants";
 import { Card } from "@material-tailwind/react";
 import { TextComponent } from "../../../components/common";
+import SwiperComponent from "../../../components/common/Swiper";
 const ExpireEvalution = () => {
   return (
     <div className="flex flex-col">
       <TextComponent variant="h6">Waiting for evaluation</TextComponent>
-      <Swiper
-        className="w-full h-[320px]" // กำหนดขนาดให้ Swiper
+      <SwiperComponent
+        className="w-full h-[350px]" // กำหนดขนาดให้ Swiper
         slidesPerView={5}
         spaceBetween={30}
         pagination={{
@@ -47,7 +48,7 @@ const ExpireEvalution = () => {
             </SwiperSlide>
           );
         })}
-      </Swiper>
+      </SwiperComponent>
     </div>
   );
 };

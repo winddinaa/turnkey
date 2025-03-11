@@ -1,10 +1,12 @@
 import React from "react";
 import { TextComponent } from "../../../components/common";
 import { mockSelectEmployee } from "./constants";
-import { Checkbox, Divider } from "@mui/material";
-import { SwiperSlide, Swiper } from "swiper/react";
+import { Divider } from "@mui/material";
+import { SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { CheckboxComponent } from "../../../components/Input";
+import ButtonComponent from "../../../components/common/Button";
+import SwiperComponent from "../../../components/common/Swiper";
 
 const ModalEvaluation = () => {
   return (
@@ -26,7 +28,7 @@ const ModalEvaluation = () => {
         </div>
       </div>
       <Divider />
-      <Swiper
+      <SwiperComponent
         className="w-full h-[400px]" // กำหนดขนาดให้ Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -81,7 +83,13 @@ const ModalEvaluation = () => {
             </SwiperSlide>
           );
         })}
-      </Swiper>
+      </SwiperComponent>
+      <div className="flex flex-row gap-5 justify-center items-center">
+        <ButtonComponent className="w-[180px] bg-localDraft">
+          Draft
+        </ButtonComponent>
+        <ButtonComponent className="w-[180px]">submit</ButtonComponent>
+      </div>
     </div>
   );
 };
