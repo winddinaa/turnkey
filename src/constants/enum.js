@@ -7,6 +7,7 @@ export const EPathPageAdmin = {
   assignMent: "admin-manage-assignment",
   dept: "admin-manage-department",
   emp: "admin-manage-employee",
+  Evaluation: "admin-evalutuion",
 };
 
 export const EBool = {

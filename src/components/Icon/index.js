@@ -16,3 +16,5 @@ export { default as CloseIcon } from "./CloseIcon";
 export { default as AddEmpIcon } from "./AddEmpIcon";
 export { default as AddFileIcon } from "./AddFileIcon";
 export { default as PersonalIcon } from "./PersonalIcon";
+export { default as ExportIcon } from "./ExportIcon";
+export { default as CheckIcon } from "./CheckIcon";

@@ -26,10 +26,11 @@ export const sideMenu = [
     ],
   },
   {
-    title: "Measurement",
+    title: "Evaluation",
     keyOpen: 4,
     icon: MeasurementIcon,
     submenu: [],
+    href: EPathPageAdmin.Evaluation,
   },
   {
     title: "Report",

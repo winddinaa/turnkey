@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import TextComponent from "../../../components/common/Text";
 import { SelectComponent } from "../../../components/Input";
 import { Eyears } from "./constants";
+import ButtonComponent from "../../../components/common/Button";
+import { Typography } from "@material-tailwind/react";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,13 @@ const Header = () => {
             option={Eyears}
           />
           <InputComponent placeholder="Assignment" icon={<SearchIcon />} />
+        </div>
+        <div>
+          <ButtonComponent className="bg-buttonExport" onClick={() => {}}>
+            <div className="flex items-center justify-center">
+              <Typography variant="h6">Export</Typography>
+            </div>
+          </ButtonComponent>
         </div>
       </div>
     </div>

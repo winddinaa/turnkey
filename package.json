@@ -30,6 +30,7 @@
     "lodash": "^4.17.21",
     "lucide-react": "^0.468.0",
     "motion": "^11.13.3",
+    "polished": "^4.3.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-date-range": "^2.0.1",
@@ -41,6 +42,7 @@
     "react-select": "^5.10.0",
     "remixicon": "^4.5.0",
     "select2": "^4.1.0-rc.0",
+    "swiper": "^11.2.5",
     "tailwind-scrollbar": "^3.1.0"
   },
   "devDependencies": {

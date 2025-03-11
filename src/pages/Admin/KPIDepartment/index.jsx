@@ -6,10 +6,7 @@ import {
   EColumnsKPIDepartment,
   headerAssignment,
   headerDraft,
-  mockArea,
-  mockCategory,
   mockDraftDepartment,
-  mockKPI,
   rows,
 } from "./constants";
 import ModalComponent from "../../../components/common/Modal";
@@ -24,15 +21,18 @@ import {
   clearAssignDepartment,
   setModalEmployeeInKPIs,
   setDataEmpInKPIs,
+  setModalPublicAssignment,
 } from "../../../reduxs/kpiDepartment/kpiDepartmentSlice";
 import { EBool, EMode } from "../../../constants/enum";
 import ModalAssign from "./ModalAssign";
 import ModalDelete from "./ModalDelete";
 import TableCollape from "../../../components/common/TableCollape";
 import ButtonComponent from "../../../components/common/Button";
-import { AddEmpIcon, AddFileIcon } from "../../../components/Icon";
+import { AddEmpIcon, AddFileIcon, ExportIcon } from "../../../components/Icon";
 import ModalAddEmployee from "./ModalAddEmployee";
 import ModalEmployeeInKPIs from "./ModalEmployeeInKPIs";
+import { theme } from "../../../core/theme/theme";
+import ModalConfirmPublic from "./ModalConfirmPublic";
 
 const KPIDepartmentPage = () => {
   const kpiDeptRedux = useSelector((state) => state.kpiDept);
@@ -120,6 +120,20 @@ const KPIDepartmentPage = () => {
                             <AddEmpIcon />
                           </ButtonComponent>
                         )}
+
+                      <ButtonComponent
+                        className="w-5 min-w-10 bg-localWhite border-primary border-2"
+                        title="Publice assignment"
+                        onClick={(e) => {
+                          dispatch(setModalPublicAssignment(true));
+                        }}
+                      >
+                        <ExportIcon
+                          fill={theme.extend.colors.primary}
+                          height="20"
+                          width="20"
+                        />
+                      </ButtonComponent>
                     </div>
                   );
                 },
@@ -162,7 +176,7 @@ const KPIDepartmentPage = () => {
       >
         <ModalAddEmployee />
       </ModalComponent>
-
+      {console.log("=> kpiDeptRedux", kpiDeptRedux)}
       <ModalComponent
         open={kpiDeptRedux.openModal.open}
         title={`Assign KPIs`}
@@ -178,6 +192,13 @@ const KPIDepartmentPage = () => {
         handleClose={() => dispatch(setModalDeleteAssignDepartment(false))}
       >
         <ModalDelete />
+      </ModalComponent>
+      <ModalComponent
+        title={`Public  KPIs Department`}
+        open={kpiDeptRedux.modalPublicAssignment}
+        handleClose={() => dispatch(setModalPublicAssignment(false))}
+      >
+        <ModalConfirmPublic />
       </ModalComponent>
     </Container>
   );

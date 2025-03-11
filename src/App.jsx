@@ -28,6 +28,7 @@ import CategoryPage from "./pages/Admin/Category";
 import KPIsPage from "./pages/Admin/KPIs";
 import DepartmentPage from "./pages/Admin/Department";
 import EmployeePage from "./pages/Admin/Employee";
+import EvalutionPage from "./pages/Admin/Evalution";
 
 function App() {
   const adminRoute = () => {
@@ -52,6 +53,10 @@ function App() {
         <Route
           path={`/${EPathPageAdmin.assignMent}`}
           element={<AssignmentPage />}
+        />
+        <Route
+          path={`/${EPathPageAdmin.Evaluation}`}
+          element={<EvalutionPage />}
         />
       </>
     );

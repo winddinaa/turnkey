@@ -10,6 +10,7 @@ import kpisReducer from "./kpis/kpisSlice";
 import deptReducer from "./department/departmentSlice";
 import empReducer from "./employee/employeeSlice";
 import kpisAssignReportReducer from "./kpisAssignReport/kpiAssignReport";
+import evaReducer from "./evaluation/evaluationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -24,5 +25,6 @@ export const store = configureStore({
     dept: deptReducer,
     emp: empReducer,
     kpisAssignReport: kpisAssignReportReducer,
+    eva: evaReducer,
   },
 });

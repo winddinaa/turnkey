@@ -85,7 +85,7 @@ const SidebarAdmin = () => {
               return (
                 <Link
                   key={`sidebar-main-${index.toString()}`}
-                  to={`/${EPathPageAdmin.area}`}
+                  to={itemMenu.href}
                 >
                   <ListItem>
                     <ListItemPrefix>

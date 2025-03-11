@@ -8,6 +8,7 @@ const initialState = {
   selectKPIs: [],
   modalAssignEmployees: { mode: "", open: false },
   modalEmployeeInKPIs: false,
+  modalPublicAssignment: false,
   openModal: { mode: "", open: false },
   dataEmpInKPIs: undefined,
   empSelectforDelete: [],
@@ -35,6 +36,7 @@ const kpiDepartmentSlice = createSlice({
       state.dataModal = [];
       state.modalAssignEmployees = { mode: "", open: false };
       state.modalEmployeeInKPIs = false;
+      state.modalPublicAssignment = false;
     },
     setAssignDepartmentDraft(state, action) {
       state.isDraft = action.payload;
@@ -44,6 +46,9 @@ const kpiDepartmentSlice = createSlice({
     },
     setModalEmployeeInKPIs(state, action) {
       state.modalEmployeeInKPIs = action.payload;
+    },
+    setModalPublicAssignment(state, action) {
+      state.modalPublicAssignment = action.payload;
     },
     setFocusAssignment(state, action) {
       state.focusAssignmentData = action.payload;
@@ -67,6 +72,7 @@ export const {
   setModalAssignKpiDepartment,
   setDataModalAssignDepartment,
   setModalDeleteAssignDepartment,
+  setModalPublicAssignment,
   setAssignDepartmentDraft,
   setFocusAssignment,
   setSelectKPIs,

@@ -20,7 +20,7 @@ const Header = () => {
           <InputComponent label="Search Assignment" icon={<SearchIcon />} />
         </div>
         <div className="flex flex-row gap-5">
-          <ButtonComponent className="bg-buttonDraft" onClick={() => {}}>
+          <ButtonComponent className="bg-localDraft" onClick={() => {}}>
             <TextComponent variant="h6" className="text-localWhite">
               My Draft
             </TextComponent>
